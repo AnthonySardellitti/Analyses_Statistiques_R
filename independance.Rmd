@@ -1,3 +1,9 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
 # Test indépendance {#independance}
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
