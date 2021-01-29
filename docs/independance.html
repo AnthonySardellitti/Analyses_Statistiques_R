@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 2 Test indépendance | Analyses Statistiques avec R</title>
+  <meta name="description" content="Chapitre 2 Test indépendance | Analyses Statistiques avec R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 2 Test indépendance | Analyses Statistiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapitre 2 Test indépendance | Analyses Statistiques avec R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 2 Test indépendance | Analyses Statistiques avec R" />
+  
+  <meta name="twitter:description" content="Chapitre 2 Test indépendance | Analyses Statistiques avec R" />
+  
+
+<meta name="author" content="Anthony SARDELLITTI" />
+
+
+<meta name="date" content="2021-01-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préface</a></li>
+<li class="chapter" data-level="2" data-path="independance.html"><a href="independance.html"><i class="fa fa-check"></i><b>2</b> Test indépendance</a><ul>
+<li class="chapter" data-level="2.1" data-path="independance.html"><a href="independance.html#test-de-corrélation"><i class="fa fa-check"></i><b>2.1</b> Test de corrélation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="independance.html"><a href="independance.html#lipide-vs-magnesium"><i class="fa fa-check"></i><b>2.1.1</b> Lipide vs Magnesium</a></li>
+<li class="chapter" data-level="2.1.2" data-path="independance.html"><a href="independance.html#sodium-vs-retinol"><i class="fa fa-check"></i><b>2.1.2</b> Sodium vs Retinol</a></li>
+<li class="chapter" data-level="2.1.3" data-path="independance.html"><a href="independance.html#matrice-des-p-values"><i class="fa fa-check"></i><b>2.1.3</b> Matrice des p-values</a></li>
+<li class="chapter" data-level="2.1.4" data-path="independance.html"><a href="independance.html#cas-de-relation-non-linéaire"><i class="fa fa-check"></i><b>2.1.4</b> Cas de relation non linéaire</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="independance.html"><a href="independance.html#test-du-chi²"><i class="fa fa-check"></i><b>2.2</b> Test du CHI²</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="independance.html"><a href="independance.html#titanic"><i class="fa fa-check"></i><b>2.2.1</b> Titanic</a></li>
+<li class="chapter" data-level="2.2.2" data-path="independance.html"><a href="independance.html#exemple-du-support"><i class="fa fa-check"></i><b>2.2.2</b> Exemple du support</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="independance.html"><a href="independance.html#anova"><i class="fa fa-check"></i><b>2.3</b> ANOVA</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="independance.html"><a href="independance.html#cas-de-variances-égales-entre-chaque-groupe"><i class="fa fa-check"></i><b>2.3.1</b> Cas de variances égales entre chaque groupe</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analyses Statistiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="independance" class="section level1">
+<h1><span class="header-section-number">Chapitre 2</span> Test indépendance</h1>
+<p>Les tests d’indépendances permettent de définir s’il existe un lien entre deux variables. Il existe différent test d’indépence, en voici quelques exemples :</p>
+<ul>
+<li>Test indépendance entre deux variables quantitatives / Test de corrélation Pearson</li>
+<li>Test d’indépendance entre deux variables qualitatives / Test du Chi²</li>
+<li>Test d’indépendance entre une variable qualitative et une quantitative / Test de Fisher avec l’analyse de la variance (ANOVA)</li>
+</ul>
+<div id="test-de-corrélation" class="section level2">
+<h2><span class="header-section-number">2.1</span> Test de corrélation</h2>
+<p>L’intérêt des tests de corrélation est d’apporter plus de pertinence et fiabilité aux coefficients de corrélation. Il existe différents test de corrélation, nous utilisons celui de Pearson.</p>
+<p>On travaille avec le jeu de données fromage 🧀</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="independance.html#cb1-1"></a>df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./datasets/fromage.txt&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="independance.html#cb2-1"></a><span class="kw">plot</span>(df)</span></code></pre></div>
+<p><img src="index.html_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="independance.html#cb3-1"></a><span class="kw">cor</span>(df, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<pre><code>##                calories      sodium      calcium     lipides     retinol
+## calories     1.00000000 0.447224073  0.433400087  0.98363377 -0.04288511
+## sodium       0.44722407 1.000000000  0.005958892  0.48334434  0.14432755
+## calcium      0.43340009 0.005958892  1.000000000  0.34113187 -0.28954677
+## lipides      0.98363377 0.483344342  0.341131874  1.00000000 -0.01835291
+## retinol     -0.04288511 0.144327552 -0.289546767 -0.01835291  1.00000000
+## folates     -0.32109786 0.136561416 -0.637502539 -0.27654282  0.51726643
+## proteines    0.88537159 0.275997906  0.610704864  0.80930257 -0.03917254
+## cholesterol  0.96192339 0.332993972  0.428446215  0.95544387 -0.08697243
+## magnesium    0.74544320 0.031112805  0.710480424  0.68986008 -0.09980065
+##                folates   proteines cholesterol   magnesium
+## calories    -0.3210979  0.88537159  0.96192339  0.74544320
+## sodium       0.1365614  0.27599791  0.33299397  0.03111281
+## calcium     -0.6375025  0.61070486  0.42844622  0.71048042
+## lipides     -0.2765428  0.80930257  0.95544387  0.68986008
+## retinol      0.5172664 -0.03917254 -0.08697243 -0.09980065
+## folates      1.0000000 -0.35287125 -0.36634610 -0.44706739
+## proteines   -0.3528712  1.00000000  0.81713835  0.78777726
+## cholesterol -0.3663461  0.81713835  1.00000000  0.75245338
+## magnesium   -0.4470674  0.78777726  0.75245338  1.00000000</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="independance.html#cb5-1"></a><span class="kw">library</span>(corrplot)</span></code></pre></div>
+<pre><code>## Warning: package &#39;corrplot&#39; was built under R version 3.5.3</code></pre>
+<pre><code>## corrplot 0.84 loaded</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="independance.html#cb8-1"></a><span class="kw">corrplot</span>(<span class="kw">cor</span>(df, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>))</span></code></pre></div>
+<p><img src="index.html_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>On pose les hypothèses de départ</p>
+<p>H0 : Variables indépendantes si p-value &gt; 5%
+<br> H1 : Variables non indépendantes si p-value &lt; 5%</p>
+<div id="lipide-vs-magnesium" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Lipide vs Magnesium</h3>
+<p>La première sortie correspond au coefficient de corrélation, la seconde à la p-value (ou probabilité critique)</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="independance.html#cb9-1"></a><span class="kw">cor</span>(<span class="dt">x =</span> df<span class="op">$</span>lipides, <span class="dt">y =</span> df<span class="op">$</span>magnesium)</span></code></pre></div>
+<pre><code>## [1] 0.6898601</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="independance.html#cb11-1"></a><span class="kw">cor.test</span>(<span class="dt">x =</span> df<span class="op">$</span>lipides, <span class="dt">y =</span> df<span class="op">$</span>magnesium)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  df$lipides and df$magnesium
+## t = 4.9515, df = 27, p-value = 3.469e-05
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.4327766 0.8431785
+## sample estimates:
+##       cor 
+## 0.6898601</code></pre>
+<p><br> H1 : Variables non indépendantes si p-value &lt; 5%</p>
+</div>
+<div id="sodium-vs-retinol" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Sodium vs Retinol</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="independance.html#cb13-1"></a><span class="kw">cor.test</span>(<span class="dt">x =</span> df<span class="op">$</span>sodium, <span class="dt">y =</span> df<span class="op">$</span>retinol)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  df$sodium and df$retinol
+## t = 0.75788, df = 27, p-value = 0.4551
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.2345870  0.4851693
+## sample estimates:
+##       cor 
+## 0.1443276</code></pre>
+<p>H0 : Variables indépendantes si p-value &gt; 5%
+<br>
+Si on veut rejeter H0 et prendre H1, j’ai 45,5% de chance de me tromper</p>
+<p>Les tests statistiques sont trés sensibles à la taille de l’échantillon.
+Un coefficient de corrélation de 0.14 n’aura pas la même significativité sur un échantillon de 29 fromages qu’un échantillon de 319 fromages avec le même coefficient de corrélation.</p>
+<p>On construit un dataframe en dupliquant le nombre de lignes</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="independance.html#cb15-1"></a>sodium &lt;-<span class="st"> </span><span class="kw">rep</span>(df<span class="op">$</span>sodium,<span class="dt">times =</span> <span class="dv">10</span>)</span>
+<span id="cb15-2"><a href="independance.html#cb15-2"></a>retinol &lt;-<span class="st"> </span><span class="kw">rep</span>(df<span class="op">$</span>retinol,<span class="dt">times =</span> <span class="dv">10</span>)</span>
+<span id="cb15-3"><a href="independance.html#cb15-3"></a>nom &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">rownames</span>(df),<span class="dt">times =</span> <span class="dv">10</span>)</span>
+<span id="cb15-4"><a href="independance.html#cb15-4"></a></span>
+<span id="cb15-5"><a href="independance.html#cb15-5"></a>df_<span class="dv">10</span> &lt;-<span class="st"> </span><span class="kw">data.frame</span>(nom,sodium,retinol)</span></code></pre></div>
+<p>Chaque fromage apparaît plusieurs fois, on a augmenté la taille de l’échantillon</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="independance.html#cb16-1"></a><span class="kw">table</span>(df_<span class="dv">10</span><span class="op">$</span>nom)</span></code></pre></div>
+<pre><code>## 
+##            Babybel           Beaufort               Bleu 
+##                 10                 10                 10 
+##          Camembert             Cantal        CarredelEst 
+##                 10                 10                 10 
+##          Chabichou           Chaource            Cheddar 
+##                 10                 10                 10 
+##              Comte        Coulomniers               Edam 
+##                 10                 10                 10 
+##           Emmental Fr.chevrepatemolle        Fr.fondu.45 
+##                 10                 10                 10 
+##     Fr.frais20nat.     Fr.frais40nat.          Maroilles 
+##                 10                 10                 10 
+##            Morbier           Parmesan      Petitsuisse40 
+##                 10                 10                 10 
+##        PontlEveque           Pyrenees          Reblochon 
+##                 10                 10                 10 
+##         Rocquefort        SaintPaulin               Tome 
+##                 10                 10                 10 
+##           Vacherin Yaourtlaitent.nat. 
+##                 10                 10</code></pre>
+<p>On effectue un autre test de corrélation avec les mêmes variables sur l’échantillon plus grand.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="independance.html#cb18-1"></a><span class="kw">cor.test</span>(<span class="dt">x =</span> df_<span class="dv">10</span><span class="op">$</span>sodium, <span class="dt">y =</span> df_<span class="dv">10</span><span class="op">$</span>retinol)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  df_10$sodium and df_10$retinol
+## t = 2.4752, df = 288, p-value = 0.01389
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.0296407 0.2552637
+## sample estimates:
+##       cor 
+## 0.1443276</code></pre>
+<p>H1 : Variables non indépendantes si p-value &lt; 5%</p>
+<p>On obtient logiquement le même coefficient de corrélation, mais en revanche, cette fois si la p-value est proche de 0.</p>
+</div>
+<div id="matrice-des-p-values" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Matrice des p-values</h3>
+<p>On effectue un test de corrélation sur chaque variable 2 à 2 en isolant uniquement la p-value</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="independance.html#cb20-1"></a>get_pvalue &lt;-<span class="st"> </span><span class="cf">function</span>(x,y){</span>
+<span id="cb20-2"><a href="independance.html#cb20-2"></a>  p &lt;-<span class="st"> </span><span class="kw">cor.test</span>(df[,x],df[,y])<span class="op">$</span>p.value</span>
+<span id="cb20-3"><a href="independance.html#cb20-3"></a>  <span class="kw">return</span>(p)</span>
+<span id="cb20-4"><a href="independance.html#cb20-4"></a>}</span>
+<span id="cb20-5"><a href="independance.html#cb20-5"></a></span>
+<span id="cb20-6"><a href="independance.html#cb20-6"></a>colonne &lt;-<span class="st"> </span><span class="kw">colnames</span>(df)</span>
+<span id="cb20-7"><a href="independance.html#cb20-7"></a>ligne &lt;-<span class="st"> </span><span class="kw">colnames</span>(df)</span>
+<span id="cb20-8"><a href="independance.html#cb20-8"></a>df_pvalues &lt;-<span class="st"> </span><span class="kw">outer</span>(<span class="dt">X =</span> colonne, <span class="dt">Y =</span> ligne, <span class="dt">FUN =</span> <span class="kw">Vectorize</span>(get_pvalue))</span>
+<span id="cb20-9"><a href="independance.html#cb20-9"></a><span class="kw">colnames</span>(df_pvalues) &lt;-<span class="st"> </span><span class="kw">colnames</span>(df)</span>
+<span id="cb20-10"><a href="independance.html#cb20-10"></a><span class="kw">rownames</span>(df_pvalues) &lt;-<span class="st"> </span><span class="kw">colnames</span>(df)</span></code></pre></div>
+<p>On affiche la matrice des corrélations avec un gradiant de couleur</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="independance.html#cb21-1"></a><span class="kw">corrplot</span>(df_pvalues,</span>
+<span id="cb21-2"><a href="independance.html#cb21-2"></a>         <span class="dt">cl.lim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">method=</span><span class="st">&quot;number&quot;</span>, <span class="dt">type=</span><span class="st">&quot;upper&quot;</span>,</span>
+<span id="cb21-3"><a href="independance.html#cb21-3"></a>         <span class="dt">col=</span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;green&quot;</span>))(<span class="dv">20</span>))</span></code></pre></div>
+<p><img src="index.html_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="cas-de-relation-non-linéaire" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> Cas de relation non linéaire</h3>
+<p><a href="http://grasland.script.univ-paris-diderot.fr/STAT98/stat98_6/stat98_6.htm">Plus d’infos ici</a></p>
+<p>Cas d’une relation non-linéaire et non-monotone</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="independance.html#cb22-1"></a>x &lt;-<span class="st"> </span><span class="dv">-10</span><span class="op">:</span><span class="dv">10</span></span>
+<span id="cb22-2"><a href="independance.html#cb22-2"></a>y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="kw">length</span>(x))</span>
+<span id="cb22-3"><a href="independance.html#cb22-3"></a></span>
+<span id="cb22-4"><a href="independance.html#cb22-4"></a><span class="kw">plot</span>(x,y)</span></code></pre></div>
+<p><img src="index.html_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="independance.html#cb23-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  x and y
+## t = -0.014561, df = 19, p-value = 0.9885
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.4344009  0.4289648
+## sample estimates:
+##         cor 
+## -0.00334054</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="independance.html#cb25-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  x and y
+## S = 1550, p-value = 0.9797
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##          rho 
+## -0.006493506</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="independance.html#cb27-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Kendall&#39;s rank correlation tau
+## 
+## data:  x and y
+## T = 104, p-value = 0.9762
+## alternative hypothesis: true tau is not equal to 0
+## sample estimates:
+##         tau 
+## -0.00952381</code></pre>
+</div>
+</div>
+<div id="test-du-chi²" class="section level2">
+<h2><span class="header-section-number">2.2</span> Test du CHI²</h2>
+<p>L’intérêt du test du Khi² est de mesurer l’indépendance entre deux variables qualitatives à partir du tableau de contigence.</p>
+<p>H0 : Variables indépendantes si p-value &gt; 5%
+H1 : Variables non indépendantes si p-value &lt; 5%</p>
+<div id="titanic" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Titanic</h3>
+<p>On travaille sur le jeu de données Titanic 🧊⛴</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="independance.html#cb29-1"></a>df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./datasets/Titanic.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="independance.html#cb30-1"></a>df_count &lt;-<span class="st"> </span><span class="kw">table</span>(df<span class="op">$</span>Survived, df<span class="op">$</span>PClass)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="independance.html#cb31-1"></a>resultat &lt;-<span class="kw">chisq.test</span>(df<span class="op">$</span>Survived,df<span class="op">$</span>PClass)</span>
+<span id="cb31-2"><a href="independance.html#cb31-2"></a>resultat</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  df$Survived and df$PClass
+## X-squared = 172.3, df = 2, p-value &lt; 2.2e-16</code></pre>
+<p>H1 : Variables non indépendantes si p-value &lt; 5%</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="independance.html#cb33-1"></a><span class="kw">attributes</span>(resultat)</span></code></pre></div>
+<pre><code>## $names
+## [1] &quot;statistic&quot; &quot;parameter&quot; &quot;p.value&quot;   &quot;method&quot;    &quot;data.name&quot; &quot;observed&quot; 
+## [7] &quot;expected&quot;  &quot;residuals&quot; &quot;stdres&quot;   
+## 
+## $class
+## [1] &quot;htest&quot;</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="independance.html#cb35-1"></a>resultat<span class="op">$</span>expected</span></code></pre></div>
+<pre><code>##            df$PClass
+## df$Survived     1st       2nd      3rd
+##           0 211.642 184.03656 467.3214
+##           1 110.358  95.96344 243.6786</code></pre>
+</div>
+<div id="exemple-du-support" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Exemple du support</h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="independance.html#cb37-1"></a>data &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">693</span>,<span class="dv">886</span>,<span class="dv">534</span>,<span class="dv">153</span>),<span class="kw">c</span>(<span class="dv">597</span>,<span class="dv">696</span>,<span class="dv">448</span>,<span class="dv">95</span>)),<span class="dt">ncol=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="independance.html#cb38-1"></a><span class="kw">chisq.test</span>(data)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  data
+## X-squared = 6.0504, df = 3, p-value = 0.1092</code></pre>
+<p>H0 : Variables indépendantes si p-value &gt; 5%
+Si on veut rejeter H0 et prendre H1, j’ai 10,9% de chance de me tromper</p>
+<p>Lecture dans la table du Chi2</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="independance.html#cb40-1"></a>p &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.80</span>, <span class="fl">0.90</span>, <span class="fl">0.005</span>)</span>
+<span id="cb40-2"><a href="independance.html#cb40-2"></a>dof &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb40-3"><a href="independance.html#cb40-3"></a>chisq_table &lt;-<span class="st"> </span><span class="kw">outer</span>(p, dof, <span class="cf">function</span>(x,y) <span class="kw">qchisq</span>(x,y))</span>
+<span id="cb40-4"><a href="independance.html#cb40-4"></a>chisq_table &lt;-<span class="st"> </span><span class="kw">t</span>(chisq_table)</span>
+<span id="cb40-5"><a href="independance.html#cb40-5"></a><span class="kw">colnames</span>(chisq_table) &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>p</span>
+<span id="cb40-6"><a href="independance.html#cb40-6"></a><span class="kw">rownames</span>(chisq_table) &lt;-<span class="st"> </span>dof</span>
+<span id="cb40-7"><a href="independance.html#cb40-7"></a>chisq_table &lt;-<span class="st"> </span><span class="kw">round</span>(chisq_table,<span class="dv">2</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:100; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.2
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.195
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.19
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.185
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.18
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.175
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.17
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.165
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.16
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.155
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.15
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.145
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.14
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.135
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.13
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.125
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.12
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.115
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.11
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.105
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+0.1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1.64
+</td>
+<td style="text-align:right;">
+1.68
+</td>
+<td style="text-align:right;">
+1.72
+</td>
+<td style="text-align:right;">
+1.76
+</td>
+<td style="text-align:right;">
+1.80
+</td>
+<td style="text-align:right;">
+1.84
+</td>
+<td style="text-align:right;">
+1.88
+</td>
+<td style="text-align:right;">
+1.93
+</td>
+<td style="text-align:right;">
+1.97
+</td>
+<td style="text-align:right;">
+2.02
+</td>
+<td style="text-align:right;">
+2.07
+</td>
+<td style="text-align:right;">
+2.12
+</td>
+<td style="text-align:right;">
+2.18
+</td>
+<td style="text-align:right;">
+2.23
+</td>
+<td style="text-align:right;">
+2.29
+</td>
+<td style="text-align:right;">
+2.35
+</td>
+<td style="text-align:right;">
+2.42
+</td>
+<td style="text-align:right;">
+2.48
+</td>
+<td style="text-align:right;">
+2.55
+</td>
+<td style="text-align:right;">
+2.63
+</td>
+<td style="text-align:right;">
+2.71
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3.22
+</td>
+<td style="text-align:right;">
+3.27
+</td>
+<td style="text-align:right;">
+3.32
+</td>
+<td style="text-align:right;">
+3.37
+</td>
+<td style="text-align:right;">
+3.43
+</td>
+<td style="text-align:right;">
+3.49
+</td>
+<td style="text-align:right;">
+3.54
+</td>
+<td style="text-align:right;">
+3.60
+</td>
+<td style="text-align:right;">
+3.67
+</td>
+<td style="text-align:right;">
+3.73
+</td>
+<td style="text-align:right;">
+3.79
+</td>
+<td style="text-align:right;">
+3.86
+</td>
+<td style="text-align:right;">
+3.93
+</td>
+<td style="text-align:right;">
+4.00
+</td>
+<td style="text-align:right;">
+4.08
+</td>
+<td style="text-align:right;">
+4.16
+</td>
+<td style="text-align:right;">
+4.24
+</td>
+<td style="text-align:right;">
+4.33
+</td>
+<td style="text-align:right;">
+4.41
+</td>
+<td style="text-align:right;">
+4.51
+</td>
+<td style="text-align:right;">
+4.61
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4.64
+</td>
+<td style="text-align:right;">
+4.70
+</td>
+<td style="text-align:right;">
+4.76
+</td>
+<td style="text-align:right;">
+4.83
+</td>
+<td style="text-align:right;">
+4.89
+</td>
+<td style="text-align:right;">
+4.96
+</td>
+<td style="text-align:right;">
+5.02
+</td>
+<td style="text-align:right;">
+5.09
+</td>
+<td style="text-align:right;">
+5.17
+</td>
+<td style="text-align:right;">
+5.24
+</td>
+<td style="text-align:right;">
+5.32
+</td>
+<td style="text-align:right;">
+5.40
+</td>
+<td style="text-align:right;">
+5.48
+</td>
+<td style="text-align:right;">
+5.56
+</td>
+<td style="text-align:right;">
+5.65
+</td>
+<td style="text-align:right;">
+5.74
+</td>
+<td style="text-align:right;">
+5.83
+</td>
+<td style="text-align:right;">
+5.93
+</td>
+<td style="text-align:right;">
+6.03
+</td>
+<td style="text-align:right;">
+6.14
+</td>
+<td style="text-align:right;">
+6.25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>📢 Taille de l’échantillon</p>
+<p>Les tests d’indépendance sont trés sensibles à la taille des échantillons. Ici on divise par 100 pour avoir des effectifs faibles mais en conservant les répartitions.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="independance.html#cb41-1"></a><span class="kw">chisq.test</span>(data<span class="op">/</span><span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  data/100
+## X-squared = 0.060504, df = 3, p-value = 0.9961</code></pre>
+<p>H0 : Variables indépendantes si p-value &gt; 5%</p>
+<p>Ici on multiplie par 100 pour avoir des effectifs grands mais en conservant les répartitions</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="independance.html#cb43-1"></a><span class="kw">chisq.test</span>(data<span class="op">*</span><span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  data * 100
+## X-squared = 605.04, df = 3, p-value &lt; 2.2e-16</code></pre>
+<p>H1 : Variables non indépendantes si p-value &lt; 5%</p>
+</div>
+</div>
+<div id="anova" class="section level2">
+<h2><span class="header-section-number">2.3</span> ANOVA</h2>
+<p>On effectue une analyse de variance pour mesurer l’indépendance entre une variable qualitative et une quantitative. La pertinence de ce test repose sur les hypothèses d’indépendance de chaque groupe ainsi que l’égalité des variances que l’on peut verifier avec un test de Bartlett. C’est avec un test de Fisher qu’on peut ensuite réaliser l’ANOVA.</p>
+<div id="cas-de-variances-égales-entre-chaque-groupe" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Cas de variances égales entre chaque groupe</h3>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="independance.html#cb45-1"></a>a &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">11</span>, <span class="dt">length.out =</span> <span class="dv">9</span>   )</span>
+<span id="cb45-2"><a href="independance.html#cb45-2"></a>b &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">31</span>, <span class="dt">to =</span> <span class="dv">40</span>, <span class="dt">length.out =</span> <span class="dv">9</span>   )</span>
+<span id="cb45-3"><a href="independance.html#cb45-3"></a>c &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">51</span>, <span class="dt">to =</span> <span class="dv">62</span>, <span class="dt">length.out =</span> <span class="dv">9</span>   )</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="independance.html#cb46-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Valeur =</span> <span class="kw">c</span>(a,b,c), <span class="dt">Groupe =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;A&quot;</span>,<span class="dv">9</span>),</span>
+<span id="cb46-2"><a href="independance.html#cb46-2"></a>                        <span class="kw">rep</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">9</span>),</span>
+<span id="cb46-3"><a href="independance.html#cb46-3"></a>                        <span class="kw">rep</span>(<span class="st">&quot;C&quot;</span>,<span class="dv">9</span>)))</span>
+<span id="cb46-4"><a href="independance.html#cb46-4"></a><span class="kw">head</span>(df)</span></code></pre></div>
+<pre><code>##   Valeur Groupe
+## 1   1.00      A
+## 2   2.25      A
+## 3   3.50      A
+## 4   4.75      A
+## 5   6.00      A
+## 6   7.25      A</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="independance.html#cb48-1"></a><span class="kw">boxplot</span>(Valeur  <span class="op">~</span><span class="st"> </span>Groupe, <span class="dt">data =</span> df, </span>
+<span id="cb48-2"><a href="independance.html#cb48-2"></a>        <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="index.html_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>On s’interesse au variance de chaque groupe</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="independance.html#cb49-1"></a><span class="kw">tapply</span>(<span class="dt">X =</span> df<span class="op">$</span>Valeur, <span class="dt">INDEX =</span> df<span class="op">$</span>Groupe,<span class="dt">FUN =</span> var)</span></code></pre></div>
+<pre><code>##         A         B         C 
+## 11.718750  9.492188 14.179688</code></pre>
+<p>Le test de bartlett permet de tester si les variances sont significativement différentes ou non</p>
+<p>H0 : Les variances de chaque groupe sont égales si p-value &gt; 5%
+H1 : Les variances de chaque groupe ne sont pas toutes égales &lt; 5%</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="independance.html#cb51-1"></a><span class="kw">bartlett.test</span>(Valeur  <span class="op">~</span><span class="st"> </span>Groupe, <span class="dt">data =</span> df)</span></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  Valeur by Groupe
+## Bartlett&#39;s K-squared = 0.30342, df = 2, p-value = 0.8592</code></pre>
+<p>H0 : Les variances de chaque groupe sont égales si p-value &gt; 5%</p>
+<p>On peut donc faire une ANOVA</p>
+<p>A travers l’analyse de la variance on cherche à déterminer si :
+H0 : Les moyennes de chaque groupe sont égales si p-value &gt; 5%
+H1 : Les moyennes de chaque groupe ne sont pas toutes égales &lt; 5%</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="independance.html#cb53-1"></a>aov &lt;-<span class="st"> </span><span class="kw">aov</span>(<span class="dt">formula =</span> Valeur <span class="op">~</span><span class="st"> </span>Groupe, <span class="dt">data =</span> df)</span>
+<span id="cb53-2"><a href="independance.html#cb53-2"></a><span class="kw">summary</span>(aov)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## Groupe       2  11585    5792     491 &lt;2e-16 ***
+## Residuals   24    283      12                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>H1 : Les moyennes de chaque groupe ne sont pas toutes égales &lt; 5%</p>
+<p>Comment calculer le tableau :</p>
+<p>Calcul de la variance intra classes</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="independance.html#cb55-1"></a>SCE_a &lt;-<span class="st"> </span>(a <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(a))<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb55-2"><a href="independance.html#cb55-2"></a>SCE_b &lt;-<span class="st"> </span>(b <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(b))<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb55-3"><a href="independance.html#cb55-3"></a>SCE_c &lt;-<span class="st"> </span>(c <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(c))<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb55-4"><a href="independance.html#cb55-4"></a>within&lt;-<span class="st"> </span><span class="kw">sum</span>(SCE_a <span class="op">+</span><span class="st"> </span>SCE_b <span class="op">+</span><span class="st"> </span>SCE_c)</span>
+<span id="cb55-5"><a href="independance.html#cb55-5"></a>within</span></code></pre></div>
+<pre><code>## [1] 283.125</code></pre>
+<p>Calcul de la variance inter classes</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="independance.html#cb57-1"></a>moyenne &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>Valeur)</span>
+<span id="cb57-2"><a href="independance.html#cb57-2"></a>moyenne_facteur &lt;-<span class="st"> </span><span class="kw">tapply</span>(<span class="dt">X =</span> df<span class="op">$</span>Valeur, </span>
+<span id="cb57-3"><a href="independance.html#cb57-3"></a>                          <span class="dt">INDEX =</span> df<span class="op">$</span>Groupe,</span>
+<span id="cb57-4"><a href="independance.html#cb57-4"></a>                          <span class="dt">FUN =</span> mean)</span>
+<span id="cb57-5"><a href="independance.html#cb57-5"></a></span>
+<span id="cb57-6"><a href="independance.html#cb57-6"></a>longueur_facteur &lt;-<span class="st"> </span><span class="kw">tapply</span>(<span class="dt">X =</span> df<span class="op">$</span>Valeur, </span>
+<span id="cb57-7"><a href="independance.html#cb57-7"></a>                           <span class="dt">INDEX =</span> df<span class="op">$</span>Groupe,</span>
+<span id="cb57-8"><a href="independance.html#cb57-8"></a>                           <span class="dt">FUN =</span> length)</span>
+<span id="cb57-9"><a href="independance.html#cb57-9"></a>between &lt;-<span class="st"> </span><span class="kw">sum</span>(longueur_facteur<span class="op">*</span>((moyenne_facteur <span class="op">-</span><span class="st"> </span>moyenne)<span class="op">^</span><span class="dv">2</span>))</span>
+<span id="cb57-10"><a href="independance.html#cb57-10"></a>between</span></code></pre></div>
+<pre><code>## [1] 11584.5</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

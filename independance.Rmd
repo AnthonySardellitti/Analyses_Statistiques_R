@@ -1,0 +1,313 @@
+# Test indépendance {#independance}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(knitr)
+library(kableExtra)
+library(dplyr)
+taille <- 12
+```
+
+
+Les tests d'indépendances permettent de définir s'il existe un lien entre deux variables. Il existe différent test d'indépence, en voici quelques exemples :
+
+- Test indépendance entre deux variables quantitatives / Test de corrélation Pearson
+- Test d'indépendance entre deux variables qualitatives / Test du Chi²
+- Test d'indépendance entre une variable qualitative et une quantitative / Test de Fisher avec l'analyse de la variance (ANOVA)
+
+
+## Test de corrélation
+
+L'intérêt des tests de corrélation est d'apporter plus de pertinence et fiabilité aux coefficients de corrélation. Il existe différents test de corrélation, nous utilisons celui de Pearson.
+
+On travaille avec le jeu de données fromage 🧀
+
+```{r}
+df <- read.csv(file = "./datasets/fromage.txt", sep = "\t", row.names = 1)
+```
+
+```{r}
+plot(df)
+```
+
+```{r}
+cor(df, method = "pearson")
+```
+
+```{r, warning=TRUE}
+library(corrplot)
+corrplot(cor(df, method = "pearson"))
+```
+
+
+On pose les hypothèses de départ
+
+H0 : Variables indépendantes si p-value > 5%
+<br> H1 : Variables non indépendantes si p-value < 5%
+
+
+### Lipide vs Magnesium
+
+La première sortie correspond au coefficient de corrélation, la seconde à la p-value (ou probabilité critique)
+
+```{r}
+cor(x = df$lipides, y = df$magnesium)
+```
+
+```{r}
+cor.test(x = df$lipides, y = df$magnesium)
+```
+
+<br> H1 : Variables non indépendantes si p-value < 5%
+
+
+### Sodium vs Retinol
+
+```{r}
+cor.test(x = df$sodium, y = df$retinol)
+```
+
+H0 : Variables indépendantes si p-value > 5%
+<br>
+Si on veut rejeter H0 et prendre H1, j'ai 45,5% de chance de me tromper
+
+Les tests statistiques sont trés sensibles à la taille de l'échantillon. 
+Un coefficient de corrélation de 0.14 n'aura pas la même significativité sur un échantillon de 29 fromages qu'un échantillon de 319 fromages avec le même coefficient de corrélation.
+
+On construit un dataframe en dupliquant le nombre de lignes
+
+```{r}
+sodium <- rep(df$sodium,times = 10)
+retinol <- rep(df$retinol,times = 10)
+nom <- rep(rownames(df),times = 10)
+
+df_10 <- data.frame(nom,sodium,retinol)
+
+```
+
+Chaque fromage apparaît plusieurs fois, on a augmenté la taille de l'échantillon
+
+
+```{r}
+table(df_10$nom)
+```
+
+On effectue un autre test de corrélation avec les mêmes variables sur l'échantillon plus grand.
+
+```{r}
+cor.test(x = df_10$sodium, y = df_10$retinol)
+```
+H1 : Variables non indépendantes si p-value < 5%
+
+On obtient logiquement le même coefficient de corrélation, mais en revanche, cette fois si la p-value est proche de 0.
+
+
+
+### Matrice des p-values
+
+On effectue un test de corrélation sur chaque variable 2 à 2 en isolant uniquement la p-value
+
+```{r}
+get_pvalue <- function(x,y){
+  p <- cor.test(df[,x],df[,y])$p.value
+  return(p)
+}
+
+colonne <- colnames(df)
+ligne <- colnames(df)
+df_pvalues <- outer(X = colonne, Y = ligne, FUN = Vectorize(get_pvalue))
+colnames(df_pvalues) <- colnames(df)
+rownames(df_pvalues) <- colnames(df)
+
+```
+
+On affiche la matrice des corrélations avec un gradiant de couleur
+
+```{r}
+corrplot(df_pvalues,
+         cl.lim=c(0,1), method="number", type="upper",
+         col=colorRampPalette(c("white","white","red","yellow","green"))(20))
+```
+
+
+### Cas de relation non linéaire
+
+
+[Plus d'infos ici](http://grasland.script.univ-paris-diderot.fr/STAT98/stat98_6/stat98_6.htm)
+
+
+Cas d'une relation non-linéaire et non-monotone
+
+
+```{r}
+x <- -10:10
+y <- x^2 + rnorm(n = length(x))
+
+plot(x,y)
+```
+
+```{r}
+cor.test(x, y, method = "pearson")
+cor.test(x, y, method = "spearman")
+cor.test(x, y, method = "kendall")
+```
+
+
+## Test du CHI²
+
+L'intérêt du test du Khi² est de mesurer l'indépendance entre deux variables qualitatives à partir du tableau de contigence.
+
+H0 : Variables indépendantes si p-value > 5%
+H1 : Variables non indépendantes si p-value < 5%
+
+### Titanic
+
+On travaille sur le jeu de données Titanic 🧊⛴
+
+```{r}
+df <- read.csv(file = "./datasets/Titanic.csv", row.names = 1)
+```
+
+```{r}
+df_count <- table(df$Survived, df$PClass)
+```
+
+```{r}
+resultat <-chisq.test(df$Survived,df$PClass)
+resultat
+```
+
+H1 : Variables non indépendantes si p-value < 5%
+
+```{r}
+attributes(resultat)
+resultat$expected
+```
+
+
+### Exemple du support
+
+```{r}
+data <- matrix(rbind(c(693,886,534,153),c(597,696,448,95)),ncol=4)
+```
+
+```{r}
+chisq.test(data)
+```
+
+H0 : Variables indépendantes si p-value > 5%
+Si on veut rejeter H0 et prendre H1, j'ai 10,9% de chance de me tromper
+
+Lecture dans la table du Chi2
+
+```{r}
+p <- seq(0.80, 0.90, 0.005)
+dof <- seq(1,3)
+chisq_table <- outer(p, dof, function(x,y) qchisq(x,y))
+chisq_table <- t(chisq_table)
+colnames(chisq_table) <- 1 - p
+rownames(chisq_table) <- dof
+chisq_table <- round(chisq_table,2)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(chisq_table, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "100")
+```
+
+
+📢 Taille de l'échantillon
+
+Les tests d'indépendance sont trés sensibles à la taille des échantillons. Ici on divise par 100 pour avoir des effectifs faibles mais en conservant les répartitions.
+
+
+```{r, warning=FALSE, message=FALSE}
+chisq.test(data/100)
+```
+H0 : Variables indépendantes si p-value > 5%
+
+
+Ici on multiplie par 100 pour avoir des effectifs grands mais en conservant les répartitions
+
+```{r}
+chisq.test(data*100)
+```
+
+H1 : Variables non indépendantes si p-value < 5%
+
+
+## ANOVA
+
+On effectue une analyse de variance pour mesurer l'indépendance entre une variable qualitative et une quantitative. La pertinence de ce test repose sur les hypothèses d'indépendance de chaque groupe ainsi que l'égalité des variances que l'on peut verifier avec un test de Bartlett. C'est avec un test de Fisher qu'on peut ensuite réaliser l'ANOVA.
+
+### Cas de variances égales entre chaque groupe
+
+```{r}
+a <- seq(from = 1, to = 11, length.out = 9   )
+b <- seq(from = 31, to = 40, length.out = 9   )
+c <- seq(from = 51, to = 62, length.out = 9   )
+```
+
+```{r}
+df <- data.frame(Valeur = c(a,b,c), Groupe = c(rep("A",9),
+                        rep("B",9),
+                        rep("C",9)))
+head(df)
+```
+```{r}
+boxplot(Valeur  ~ Groupe, data = df, 
+        col = 1:3, horizontal = TRUE)
+```
+
+On s'interesse au variance de chaque groupe
+
+```{r}
+tapply(X = df$Valeur, INDEX = df$Groupe,FUN = var)
+```
+
+Le test de bartlett permet de tester si les variances sont significativement différentes ou non
+
+H0 : Les variances de chaque groupe sont égales si p-value > 5%
+H1 : Les variances de chaque groupe ne sont pas toutes égales < 5%
+
+```{r}
+bartlett.test(Valeur  ~ Groupe, data = df)
+```
+H0 : Les variances de chaque groupe sont égales si p-value > 5%
+
+On peut donc faire une ANOVA
+
+A travers l'analyse de la variance on cherche à déterminer si :
+H0 : Les moyennes de chaque groupe sont égales si p-value > 5%
+H1 : Les moyennes de chaque groupe ne sont pas toutes égales < 5%
+
+```{r}
+aov <- aov(formula = Valeur ~ Groupe, data = df)
+summary(aov)
+```
+H1 : Les moyennes de chaque groupe ne sont pas toutes égales < 5%
+
+Comment calculer le tableau :
+
+Calcul de la variance intra classes
+```{r}
+SCE_a <- (a - mean(a))^2
+SCE_b <- (b - mean(b))^2
+SCE_c <- (c - mean(c))^2
+within<- sum(SCE_a + SCE_b + SCE_c)
+within
+```
+
+Calcul de la variance inter classes
+```{r}
+moyenne <- mean(df$Valeur)
+moyenne_facteur <- tapply(X = df$Valeur, 
+                          INDEX = df$Groupe,
+                          FUN = mean)
+
+longueur_facteur <- tapply(X = df$Valeur, 
+                           INDEX = df$Groupe,
+                           FUN = length)
+between <- sum(longueur_facteur*((moyenne_facteur - moyenne)^2))
+between
+```
+
+
