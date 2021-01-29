@@ -216,7 +216,7 @@ chisq_table <- round(chisq_table,2)
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-kable(chisq_table, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "100")
+kable(chisq_table, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "100px")
 ```
 
 
@@ -240,11 +240,90 @@ chisq.test(data*100)
 H1 : Variables non indépendantes si p-value < 5%
 
 
-## ANOVA
+## ANOVA 1
 
-On effectue une analyse de variance pour mesurer l'indépendance entre une variable qualitative et une quantitative. La pertinence de ce test repose sur les hypothèses d'indépendance de chaque groupe ainsi que l'égalité des variances que l'on peut verifier avec un test de Bartlett. C'est avec un test de Fisher qu'on peut ensuite réaliser l'ANOVA.
+On effectue une analyse de variance pour mesurer l'indépendance entre une variable qualitative et une quantitative. 
 
-### Cas de variances égales entre chaque groupe
+
+Pour illustrer cela, on utilise le jeu de données Hotdogs 🌭.
+
+```{r}
+df <- read.csv(file = "./datasets/Hotdogs.csv", sep = ";")
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(df, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "100px")
+```
+
+
+On va tester l'indépendance entre la variable qualitative `Type` et la variable quantitatives `Calories`. 
+
+```{r}
+boxplot(Calories  ~ Type, data = df, 
+        horizontal = TRUE)
+```
+
+Dans une ANOVA, on cherche à déterminer si les moyennes des groupes sont significativement différentes. On pose donc :
+
+* H0 : Les moyennes de chaque groupe sont égales si p-value > 5%
+* H1 : Les moyennes de chaque groupe ne sont pas toutes égales si p-value < 5%
+
+Dans une ANOVA, on étudie la variance de chacun de ces groupes. Pour cela on utilise la fonction `aov()`.
+
+```{r}
+aov <- aov(formula = Calories ~ Type, data = df)
+summary(aov)
+```
+H1 : Les moyennes de chaque groupe ne sont pas toutes égales
+
+
+Quand on dispose d'un petit échantillon, la pertinence de ce test repose sur la validation de plusieurs hypothèses :
+
+* - l'indépendance entre les échantillons de chaque groupe
+* - l'égalité des des variances que l'on peut verifier avec un test de Bartlett.
+* - la normal
+
+### L'indépendance
+
+L'indépendance est une des 3 conditions de validité d'une ANOVA.
+Seul le contexte de l'étude permet de s'assurer de l'indépendance entre les échantillons de chaque groupe (ici *beef*, *poultry*, *chicken*.)
+
+### L'égalité des variances
+
+On parle aussi d'homoscédasticité. C'est une des 3 conditions de validité d'une ANOVA. On cherche à démontrer que les variances de chaque groupe sont égales. Dans un boxplot, l'amplitude des boîtes traduit graphiquement l'égalité des variances.
+
+```{r}
+boxplot(Calories  ~ Type, data = df, 
+        horizontal = TRUE)
+```
+
+Mais c'est le test de bartlett qui permet de tester si les variances sont significativement différentes ou non avec :
+
+* H0 : Les variances de chaque groupe sont égales si p-value > 5%
+* H1 : Les variances de chaque groupe ne sont pas toutes égales < 5%
+
+```{r}
+bartlett.test(Calories  ~ Type, data = df)
+```
+H0 : Les variances de chaque groupe sont égales.
+La deuxième condition pour effectuer une anova est validée.
+
+### Normalité des résidus
+
+C'est une des 3 conditions de validité d'une ANOVA. L'objectif est de s'assurer que les résidus suivent une loi normale afin de ne pas affirmer qu'il existe une différence de moyenne entre les groupes qui serait causée par le hasard.
+
+Dans R, on utilise le test de Shapiro-Wilk pour tester la normalité des résidus où :
+
+* H0 : Les résidus suivent une loi normale si p-value > 5%
+* H1 : Les résidus ne suivent pas une loi normale si p-value < 5%
+
+```{r}
+aov <- aov(formula = Calories ~ Type, data = df)
+shapiro.test(aov$residuals)
+```
+H1 : Les résidus ne suivent pas une loi normale
+
+### Calcul - Cas des variances égales
 
 ```{r}
 a <- seq(from = 1, to = 11, length.out = 9   )
@@ -263,46 +342,24 @@ boxplot(Valeur  ~ Groupe, data = df,
         col = 1:3, horizontal = TRUE)
 ```
 
-On s'interesse au variance de chaque groupe
+Comment calculer le tableau récaptitulatif de l'analyse de la variance :
 
-```{r}
-tapply(X = df$Valeur, INDEX = df$Groupe,FUN = var)
+```{r, echo=FALSE}
+summary(aov(formula = Valeur ~ Groupe, data = df))
 ```
 
-Le test de bartlett permet de tester si les variances sont significativement différentes ou non
+Variance intra classes
 
-H0 : Les variances de chaque groupe sont égales si p-value > 5%
-H1 : Les variances de chaque groupe ne sont pas toutes égales < 5%
-
-```{r}
-bartlett.test(Valeur  ~ Groupe, data = df)
-```
-H0 : Les variances de chaque groupe sont égales si p-value > 5%
-
-On peut donc faire une ANOVA
-
-A travers l'analyse de la variance on cherche à déterminer si :
-H0 : Les moyennes de chaque groupe sont égales si p-value > 5%
-H1 : Les moyennes de chaque groupe ne sont pas toutes égales < 5%
-
-```{r}
-aov <- aov(formula = Valeur ~ Groupe, data = df)
-summary(aov)
-```
-H1 : Les moyennes de chaque groupe ne sont pas toutes égales < 5%
-
-Comment calculer le tableau :
-
-Calcul de la variance intra classes
 ```{r}
 SCE_a <- (a - mean(a))^2
 SCE_b <- (b - mean(b))^2
 SCE_c <- (c - mean(c))^2
-within<- sum(SCE_a + SCE_b + SCE_c)
-within
+intra <- sum(SCE_a + SCE_b + SCE_c)
+intra
 ```
 
-Calcul de la variance inter classes
+Variance inter classes
+
 ```{r}
 moyenne <- mean(df$Valeur)
 moyenne_facteur <- tapply(X = df$Valeur, 
@@ -312,8 +369,123 @@ moyenne_facteur <- tapply(X = df$Valeur,
 longueur_facteur <- tapply(X = df$Valeur, 
                            INDEX = df$Groupe,
                            FUN = length)
-between <- sum(longueur_facteur*((moyenne_facteur - moyenne)^2))
-between
+inter <- sum(longueur_facteur*((moyenne_facteur - moyenne)^2))
+inter
+```
+Degré de liberté
+
+```{r}
+n <- nrow(df)
+p <- length(levels(df$Groupe))
+dof_inter <- p - 1
+dof_intra <- n - p
+dof_inter
+dof_intra
 ```
 
+Calcul de la statistique de test de Fisher
+
+```{r}
+Stat_Fisher <- (inter/dof_inter) / (intra/dof_intra)
+Stat_Fisher
+```
+
+On lit dans la table de Fisher
+
+```{r}
+pvalue <- 1-pf(q = Stat_Fisher,
+   df1 = dof_inter,
+   df2 = dof_intra)
+pvalue
+```
+
+Réciproque de la loi de Fisher pour retrouver la statistique de test.
+
+```{r}
+qf(p = 1-pvalue, df1 = dof_inter, df2 = dof_intra)
+```
+
+### Calcul - Cas des variances inégales
+
+```{r}
+a <- seq(from = 1, to = 40, length.out = 9   )
+b <- seq(from = 10, to = 30, length.out = 9   )
+c <- seq(from = 25, to = 30, length.out = 9   )
+```
+
+```{r}
+df <- data.frame(Valeur = c(a,b,c), Groupe = c(rep("A",9),
+                        rep("B",9),
+                        rep("C",9)))
+head(df)
+```
+```{r}
+boxplot(Valeur  ~ Groupe, data = df, 
+        col = 1:3, horizontal = TRUE)
+```
+
+Comment calculer le tableau récaptitulatif de l'analyse de la variance :
+
+```{r, echo=FALSE}
+summary(aov(formula = Valeur ~ Groupe, data = df))
+```
+
+Variance intra classes
+
+```{r}
+SCE_a <- (a - mean(a))^2
+SCE_b <- (b - mean(b))^2
+SCE_c <- (c - mean(c))^2
+intra <- sum(SCE_a + SCE_b + SCE_c)
+intra
+```
+
+Variance inter classes
+
+```{r}
+moyenne <- mean(df$Valeur)
+moyenne_facteur <- tapply(X = df$Valeur, 
+                          INDEX = df$Groupe,
+                          FUN = mean)
+
+longueur_facteur <- tapply(X = df$Valeur, 
+                           INDEX = df$Groupe,
+                           FUN = length)
+inter <- sum(longueur_facteur*((moyenne_facteur - moyenne)^2))
+inter
+```
+Degré de liberté
+
+```{r}
+n <- nrow(df)
+p <- length(levels(df$Groupe))
+dof_inter <- p - 1
+dof_intra <- n - p
+dof_inter
+dof_intra
+```
+
+Calcul de la statistique de test de Fisher
+
+```{r}
+Stat_Fisher <- (inter/dof_inter) / (intra/dof_intra)
+Stat_Fisher
+```
+
+On lit dans la table de Fisher
+
+```{r}
+pvalue <- 1-pf(q = Stat_Fisher,
+   df1 = dof_inter,
+   df2 = dof_intra)
+pvalue
+```
+
+Réciproque de la loi de Fisher pour retrouver la statistique de test.
+
+```{r}
+qf(p = 1-pvalue, df1 = dof_inter, df2 = dof_intra)
+```
+
+## ANOVA 2
 
