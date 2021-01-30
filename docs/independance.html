@@ -870,33 +870,33 @@ Un coefficient de corrélation de 0.14 n’aura pas la même significativité su
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  x and y
-## t = 0.0062916, df = 19, p-value = 0.995
+## t = -0.0092277, df = 19, p-value = 0.9927
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  -0.4305116  0.4328605
+##  -0.4334077  0.4299627
 ## sample estimates:
-##         cor 
-## 0.001443389</code></pre>
+##          cor 
+## -0.002116978</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="independance.html#cb22-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Spearman&#39;s rank correlation rho
 ## 
 ## data:  x and y
-## S = 1538, p-value = 0.9977
+## S = 1526, p-value = 0.9707
 ## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
 ##         rho 
-## 0.001298701</code></pre>
+## 0.009090909</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="independance.html#cb24-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Kendall&#39;s rank correlation tau
 ## 
 ## data:  x and y
-## T = 106, p-value = 0.9762
+## T = 107, p-value = 0.9287
 ## alternative hypothesis: true tau is not equal to 0
 ## sample estimates:
 ##        tau 
-## 0.00952381</code></pre>
+## 0.01904762</code></pre>
 </div>
 </div>
 <div id="test-du-chi²" class="section level2">
