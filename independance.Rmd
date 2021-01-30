@@ -32,20 +32,15 @@ df <- read.csv(file = "./datasets/fromage.txt", sep = "\t", row.names = 1)
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-kable(head(df), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "100px")
+kable(head(df), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%")
 ```
+
 
 ```{r}
 plot(df)
 ```
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-df_cor <- cor(df, method = "pearson")
-kable(df_cor, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
-```
-
-
-```{r, warning=FALSE}
+```{r, warning=FALSE, message=FALSE}
 library(corrplot)
 corrplot(cor(df, method = "pearson"))
 ```
@@ -176,7 +171,7 @@ df <- read.csv(file = "./datasets/Titanic.csv", row.names = 1)
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-kable(head(df), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+kable(head(df), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "200px")
 ```
 
 
@@ -235,7 +230,7 @@ chisq_table <- round(chisq_table,2)
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-kable(chisq_table, "html", row.names = TRUE) %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "200px")
+kable(chisq_table, "html", row.names = TRUE) %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%")
 ```
 
 
@@ -271,7 +266,7 @@ df <- read.csv(file = "./datasets/Hotdogs.csv",
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-kable(df, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+kable(head(df), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%")
 ```
 
 
@@ -565,6 +560,7 @@ Quelques soit le nombre de facteurs étudiés, nous avons toujours les mêmes hy
 * H1 : Les moyennes de chaque groupe ne sont pas toutes égales si p-value < 5%
 
 ```{r}
+df$dose <- as.factor(df$dose)
 aov <- aov(formula = len ~ dose + supp + supp*dose , data = df)
 summary(aov)
 ```
@@ -573,7 +569,7 @@ H1 : Les moyennes de chaque groupe ne sont pas toutes égales pour chaque facteu
 📢 On voit donc qu'il existe une intéraction entre les deux variables. Pour mesurer quelles associations sont significativement différentes des autres, on peut utilise un test de Tukey qui consiste à faire des tests de comparaison de moyenne sur deux échantillon avec toutes les combinaisons d'association
 
 
-```{r, warning=FALSE}
+```{r,warning=FALSE}
 TukeyHSD(aov)
 ```
 

@@ -1,8 +1,8 @@
 ---
-title: "Analyses Statistiques avec R"
+title: "La data science avec R"
 author: "Anthony SARDELLITTI"
 date: "`r Sys.Date()`"
-description: "Analyses Statistiques avec R"
+description: "La data science avec R"
 site: bookdown::bookdown_site
 documentclass: book
 output:
@@ -12,4 +12,6 @@ bookdown::pdf_book: default
 
 # Préface
 
-Ce livre permet de mettre un pied dans le monde de la statistique avec le langage R. Il présente les concepts fondamentaux. (réalisation en cours)
+Ce livre permet de mettre un pied dans le monde de la data science avec le langage R. Il présente les concepts fondamentaux à travers la Statistique et les approches de Machine Learning (réalisation en cours).
+
+Le code source de ce cours est disponible sur [ github](https://github.com/AnthonySardellitti/datascience-r).
