@@ -31,24 +31,30 @@ On travaille avec le jeu de données fromage 🧀
 df <- read.csv(file = "./datasets/fromage.txt", sep = "\t", row.names = 1)
 ```
 
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(head(df), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "100px")
+```
+
 ```{r}
 plot(df)
 ```
 
-```{r}
-cor(df, method = "pearson")
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+df_cor <- cor(df, method = "pearson")
+kable(df_cor, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
 ```
 
-```{r, warning=TRUE}
+
+```{r, warning=FALSE}
 library(corrplot)
 corrplot(cor(df, method = "pearson"))
 ```
 
 
-On pose les hypothèses de départ
+On pose les hypothèses de départ :
 
-H0 : Variables indépendantes si p-value > 5%
-<br> H1 : Variables non indépendantes si p-value < 5%
+* H0 : Variables indépendantes si p-value > 5%
+* H1 : Variables non indépendantes si p-value < 5%
 
 
 ### Lipide vs Magnesium
@@ -63,7 +69,7 @@ cor(x = df$lipides, y = df$magnesium)
 cor.test(x = df$lipides, y = df$magnesium)
 ```
 
-<br> H1 : Variables non indépendantes si p-value < 5%
+H1 : Variables non indépendantes
 
 
 ### Sodium vs Retinol
@@ -73,7 +79,7 @@ cor.test(x = df$sodium, y = df$retinol)
 ```
 
 H0 : Variables indépendantes si p-value > 5%
-<br>
+
 Si on veut rejeter H0 et prendre H1, j'ai 45,5% de chance de me tromper
 
 Les tests statistiques sont trés sensibles à la taille de l'échantillon. 
@@ -102,7 +108,7 @@ On effectue un autre test de corrélation avec les mêmes variables sur l'échan
 ```{r}
 cor.test(x = df_10$sodium, y = df_10$retinol)
 ```
-H1 : Variables non indépendantes si p-value < 5%
+H1 : Variables non indépendantes
 
 On obtient logiquement le même coefficient de corrélation, mais en revanche, cette fois si la p-value est proche de 0.
 
@@ -137,8 +143,7 @@ corrplot(df_pvalues,
 
 ### Cas de relation non linéaire
 
-
-[Plus d'infos ici](http://grasland.script.univ-paris-diderot.fr/STAT98/stat98_6/stat98_6.htm)
+Les différents de corrélation sont beaucoup plus adaptés aux relation linéaire. C'est pourquoi il est important de toujours visualiser les distributions ([plus d'infos ici](http://grasland.script.univ-paris-diderot.fr/STAT98/stat98_6/stat98_6.htm)).
 
 
 Cas d'une relation non-linéaire et non-monotone
@@ -160,10 +165,7 @@ cor.test(x, y, method = "kendall")
 
 ## Test du CHI²
 
-L'intérêt du test du Khi² est de mesurer l'indépendance entre deux variables qualitatives à partir du tableau de contigence.
-
-H0 : Variables indépendantes si p-value > 5%
-H1 : Variables non indépendantes si p-value < 5%
+L'intérêt du test du Chi² est de mesurer l'indépendance entre deux variables qualitatives à partir de tableau de contigence.
 
 ### Titanic
 
@@ -173,34 +175,51 @@ On travaille sur le jeu de données Titanic 🧊⛴
 df <- read.csv(file = "./datasets/Titanic.csv", row.names = 1)
 ```
 
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(head(df), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+```
+
+
 ```{r}
 df_count <- table(df$Survived, df$PClass)
 ```
+
+On pose :
+
+* H0 : Variables indépendantes si p-value > 5%
+* H1 : Variables non indépendantes si p-value < 5%
 
 ```{r}
 resultat <-chisq.test(df$Survived,df$PClass)
 resultat
 ```
 
-H1 : Variables non indépendantes si p-value < 5%
+H1 : Variables non indépendantes
+
+La fonction `attributes` permet d'afficher les différentes sorties calculées.
 
 ```{r}
 attributes(resultat)
+```
+Par exemple le tableau des effectifs théoriques.
+
+```{r}
 resultat$expected
 ```
-
 
 ### Exemple du support
 
 ```{r}
 data <- matrix(rbind(c(693,886,534,153),c(597,696,448,95)),ncol=4)
+data
 ```
 
 ```{r}
 chisq.test(data)
 ```
 
-H0 : Variables indépendantes si p-value > 5%
+H0 : Variables indépendantes 
+
 Si on veut rejeter H0 et prendre H1, j'ai 10,9% de chance de me tromper
 
 Lecture dans la table du Chi2
@@ -216,7 +235,7 @@ chisq_table <- round(chisq_table,2)
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-kable(chisq_table, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "100px")
+kable(chisq_table, "html", row.names = TRUE) %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "200px")
 ```
 
 
@@ -228,8 +247,7 @@ Les tests d'indépendance sont trés sensibles à la taille des échantillons. I
 ```{r, warning=FALSE, message=FALSE}
 chisq.test(data/100)
 ```
-H0 : Variables indépendantes si p-value > 5%
-
+H0 : Variables indépendantes 
 
 Ici on multiplie par 100 pour avoir des effectifs grands mais en conservant les répartitions
 
@@ -237,7 +255,7 @@ Ici on multiplie par 100 pour avoir des effectifs grands mais en conservant les 
 chisq.test(data*100)
 ```
 
-H1 : Variables non indépendantes si p-value < 5%
+H1 : Variables non indépendantes
 
 
 ## ANOVA 1
@@ -248,11 +266,12 @@ On effectue une analyse de variance pour mesurer l'indépendance entre une varia
 Pour illustrer cela, on utilise le jeu de données Hotdogs 🌭.
 
 ```{r}
-df <- read.csv(file = "./datasets/Hotdogs.csv", sep = ";")
+df <- read.csv(file = "./datasets/Hotdogs.csv", 
+               sep = ";")
 ```
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-kable(df, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "100px")
+kable(df, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
 ```
 
 
@@ -279,9 +298,9 @@ H1 : Les moyennes de chaque groupe ne sont pas toutes égales
 
 Quand on dispose d'un petit échantillon, la pertinence de ce test repose sur la validation de plusieurs hypothèses :
 
-* - l'indépendance entre les échantillons de chaque groupe
-* - l'égalité des des variances que l'on peut verifier avec un test de Bartlett.
-* - la normal
+* l'indépendance entre les échantillons de chaque groupe
+* l'égalité des des variances que l'on peut verifier avec un test de Bartlett.
+* la normal
 
 ### L'indépendance
 
@@ -489,3 +508,73 @@ qf(p = 1-pvalue, df1 = dof_inter, df2 = dof_intra)
 
 ## ANOVA 2
 
+Même principe que l'Anova à un facteur sauf qu'on ajoute un autre facteur. L'idée est de tester l'indépendance de ces facteurs sur une variable quantitatives continue. 
+
+On étudie la longueur des odontoblastes (cellules responsables de la croissance dentaire) chez 60 cobayes. Chaque animal a reçu l'une des trois doses de vitamine C (0,5, 1 et 2 mg / jour) par l'une des deux méthodes d'administration, du jus d'orange ou de l'acide ascorbique (une forme de vitamine C et codée VC) :
+
+* len : lLongueur de la dent
+* supp : supplément (VC ou OJ).
+* dose : dose en milligrammes / jour
+
+Ce jeu de données *ToothGrowth* est  présent dans le `datasets`.
+
+```{r}
+df <- ToothGrowth
+```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(df, "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "40%", height = "200px")
+```
+
+En théorie, dans une ANOVA à plusieurs facteurs, il faut valider chacune des hypothèses une à une pour chaque facteur. La particularité de l'ANOVA à plusieurs facteurs réside dans la mesure de l'intéraction entre les facteurs pouvant mener à des différences de moyennes entres les groupes.
+
+### Effet de la variable `supp`
+
+```{r}
+boxplot(len  ~ supp, data = df,
+        horizontal = TRUE)
+```
+
+### Effet de la variable `dose`
+
+```{r}
+boxplot(len  ~ dose, data = df,
+        horizontal = TRUE)
+```
+
+### Effet l'intéraction entre les deux facteurs
+
+Pour visualiser graphiquement l'intéraction, on crée une colonne avec les deux modalités
+
+```{r}
+df$interaction <- paste(df$supp,"-",df$dose)
+```
+
+
+```{r}
+boxplot(len  ~ interaction, data = df,
+        horizontal = TRUE)
+```
+
+### Calcul de l'ANOVA 2
+
+Quelques soit le nombre de facteurs étudiés, nous avons toujours les mêmes hypothèses dans une ANOVA :
+
+* H0 : Les moyennes de chaque groupe sont égales si p-value > 5%
+* H1 : Les moyennes de chaque groupe ne sont pas toutes égales si p-value < 5%
+
+```{r}
+aov <- aov(formula = len ~ dose + supp + supp*dose , data = df)
+summary(aov)
+```
+H1 : Les moyennes de chaque groupe ne sont pas toutes égales pour chaque facteur.
+
+📢 On voit donc qu'il existe une intéraction entre les deux variables. Pour mesurer quelles associations sont significativement différentes des autres, on peut utilise un test de Tukey qui consiste à faire des tests de comparaison de moyenne sur deux échantillon avec toutes les combinaisons d'association
+
+
+```{r, warning=FALSE}
+TukeyHSD(aov)
+```
+
+en cours de rédaction ...
