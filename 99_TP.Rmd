@@ -1,0 +1,153 @@
+# S'entrainer {#entrainement}
+
+## TP1
+
+
+<p>
+![Pokemo*](./img/pokemon.jpg)
+</p>
+
+Ce TP reprend quelques rappels de R.
+On utilise  le fichier `pokemon.xlsx` qui décrit les statistiques des pokemon des deux premières générations.
+Le fichier est issu du site [ Kaggle ](https://www.kaggle.com/rounakbanik/pokemon). Il a été adapté pour ce TP. Pour réaliser ce TP, télécharger le fichier en [cliquant ici](https://github.com/AnthonySardellitti/datascience-r/tree/master/dataset).Voici une description des données :
+
+- `pokedex_number` : numéro du pokemon
+- `nom` : nom du pokemon
+- `generation` : le numéro de génération dont est issu le pokemon
+- `is_legendary` : Oui / Non si le pokemon est légendaire
+- `type` : le type du pokemon
+- `weight_kg` : le poids du pokemon en kg
+- `height_m` : la taille du pokemon en mètre
+- `attack` : la puissance d'attaque du pokemon
+- `defense` : la puissance de défense du pokemon
+- `speed` : la vitesse du pokemon
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(readxl)
+pokemon <- read_excel(path = "./datasets/pokemon.xlsx", sheet = "pokemon")
+kable(head(pokemon,n = 20), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+```
+<br>
+
+**Exercice 1 : Importer les données**
+
+a. Importez le jeu de données `pokemon.xlsx` à l'aide du package `readxl`.
+b. Combien de lignes, colonnes sont présentes dans ce dataset (utilisez les fonctions adaptées) ?
+c. Affichez le nom des colonnes.
+d. Affichez le type des colonnes avec la fonction adaptée.
+e. On souhaite analyser les variables `generation`, `is_legendary`, et `type` en tant que variables qualitatives. Modifier le type de ces variables pour les transformer en type factor.
+f. Combien de niveaux (*levels*) sont présents dans ces variables ?
+g. Affichez un résumé des données avec la fonction adaptée.
+
+
+**Exercice 2 : Statistiques descriptives**
+
+a. Déterminer la moyenne de la variable `weight_kg`.
+b. Déterminer la médiane de la variable `weight_kg`.
+d. Déterminer les quartiles de la variable `height_m`.
+e. Déterminer les déciles de la variable `height_m`.
+f. Déterminer la variance et l'écart-type de la variable `weight_kg`.
+g. Déterminer un tri à plat pour compter les effectifs des modalités de chaque variable *factor* en triant chaque sortie par ordre décroissant.
+
+**Exercice 3 : Tris et Selections**
+
+Pour chaque question suivante, affectez le résultat de la requête dans un objet puis calculez sa dimension. Exemple :
+
+```{r}
+#Selectionnez les deux premières colonnes du data frame
+requete_0 <- pokemon[,1:2]
+dim(requete_0)
+```
+
+a. Sélectionnez la colonne `nom` et `is_legendary`.
+b. Sélectionnez les 50 premières lignes et les deux premières colonnes.
+c. Sélectionnez les 10 premières lignes et toutes les colonnes.
+d. Sélectionnez toutes les colonnes sauf la dernière.
+e. Sélectionnez les colonnes 2,8,9 et 10.
+f. Sélectionnez les lignes 20 à 30 et 80 à 100.
+g. Triez le dataset  par ordre alphabétique et afficher le `nom` du pokemon dela première ligne.
+h. Triez le dataset  par `weight_kg` en ordre **décroissant**, et afficher le `nom`du pokemon de la première ligne
+i. Triez le dataset  par `attack` en ordre **décroissant** puis par `speed` en ordre **croissant**, et afficher le `nom` des pokemons des 10 premières lignes.
+
+
+**Exercice 4 : Tris et Filtres**
+
+Pour chaque question suivante, affectez le résultat de la requête dans un objet puis calculez sa dimension. Pour faciliter la lecture, sélectionnez la colonne `nom`et les colonnes concernées par le filtre. Exemple :
+
+```{r}
+#Selectionnez les pokemons de type feu
+requete_0 <- pokemon[ pokemon$type == "fire", c("nom","type")]
+dim(requete_0)
+```
+a. Filtrez sur les pokemons qui ont 150 ou plus d'`attack` puis trier le résultat par ordre décroissant d'`attack`. 
+b. Filtrez sur les pokemons de `type` *dragon*,*ghost*,*psychic* et *dark*
+c. Filtrez sur les pokemons de `type` *fire* avec plus de 100 d'`attack`, puis trier le résultat par ordre décroissant d'`attack`. 
+d. Filtrez sur les pokemons qui ont entre 100 et 150 de `speed`. Les trier par `speed`décroissant.
+e. Filtrez sur les pokemons pesant plus de 250 kg et affichez le résultat pour vérifier.
+f. Filtrez sur les pokémons qui ont des valeurs manquantes sur la variable `height_m`.
+g. Filtrez sur les pokemons qui ont des valeurs renseignées à la fois pour la variable `weight_kg` **et** la variable `height`.
+
+**Exercice 5 : Corrélation**
+
+a. Analysez les coefficients de corrélations des variables quantitatives `weight_kg`, `height_m`, `attack`, `defense`, `speed`. Il est conseillé d'utiliser la matrice des corrélations et la visualisation adaptée.
+
+b. Représentez graphiquement les 3 couples de variables avec les coefficients de corrélations les plus élevés.
+
+c. Effectuez un test d'indépendance sur le couple de variables avec le coefficient de corrélation le plus bas. N'oubliez pas de poser les hypothèses.
+
+d. Effectuez un test d'indépendance sur le couple de variables avec le coefficient de corrélation le plus élevé. N'oubliez pas de poser les hypothèses. 
+
+**Exercice 6 : Anova**
+
+a. Dupliquer le data frame avec uniquement les pokemons de type `water`, `fire`, et `grass`.
+
+b. Déterminer s'il y a indépendance entre ces `type` et l' `attack`.
+
+c. Déterminer s'il y a indépendance entre ces `type` et l' `speed`.
+
+d. Déterminer s'il y a indépendance entre ces `type` et l' `weight_kg`.
+
+e. Déterminer s'il y a indépendance entre ces `type` et l' `height_m`.
+
+f. Déterminer s'il y a indépendance entre ces `type` et l' `defense`.
+
+g. Le `type` et la `generation` ont-il une influence sur l'`attack` ?
+
+
+**Exercice 7 : Clustering**
+
+a. Avec la méthode des K-Means, construire un clustering en 3 classes d'après les variables quantitatives `weight_kg`, `height_m`, `attack`, `defense`, `speed`.
+
+b. Faire varier le nombre de classe pour déterminer le nombre de cluster le plus pertinent.
+
+c. Expliquer les classes en décrivant graphiquement les clusters identifiés.
+
+d. Avez-vous centré et réduit les données sur les questions a à c ? Non ? Alors c'est reparti ! Il se peut que les clusters varient considérablement.
+
+e. Proposer une autre segmentation avec une méthode de clustering hiérarchique
+
+f. On observe des pokemons atypiques qui faussent nos deux méthodes de segmentation. Essayez de les identifier avec une méthode de clustering par densité pour les exclures
+
+g. Après avoir exclus les outliers, on peut refaire une segmentation avec la méthode de votre choix.
+
+h. Expliquer les classes en décrivant graphiquement les clusters identifiés.
+
+
+**Exercice 8 : ACP**
+
+a. Construire une Analyse en Composantes Principales sur les variables quantitatives 
+
+b. Afficher la répartition de variances expliquées de chacun des axes. Combien d'axes est-il pertinent de conserver ?
+
+c. Construire puis interpreter le cercle des corrélations.
+
+d. Projeter les coordonnées des individus sur les deux premiers axes.
+
+e. Quelles est la variable qui contribue le plus à la création du facteur 1, et du facteur 2 ?
+
+f. Quel est le pokémon qui contribue le plus à la création du facteur 1, et du facteur 2 ?
+
+g. Proposer un clustering hiérarchique basé sur les résultat de l'ACP
+
+h. Expliquer les classes en décrivant graphiquement les clusters identifiés.

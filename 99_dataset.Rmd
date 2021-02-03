@@ -1,0 +1,176 @@
+# Jeux de données utilisés {#all_dataset}
+
+Ce chapitre présente les différents jeux de données utilisés dans ce livre.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(knitr)
+library(kableExtra)
+library(dplyr)
+taille <- 12
+```
+
+ 
+## Iris 🌺
+
+Le jeu de données présente les caractéristiques de 3 espèces de fleurs. Il est intégré au package *datasets* déjà chargé à chaque ouverture de session dans RStudio.
+
+Voici la présentation du jeu de données :
+
+* `Sepal.Length` : longueur du sépale
+* `Sepal.Width` : largeur du sépale
+* `Petal.Length` : longueur du pétale
+* `Petal.Width` : largeur du pétale
+* `Species` : l'espèce de la fleur
+
+```{r}
+dim(iris)
+```
+
+Voici un extrait du dataset :
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(head(iris,n = 20), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+```
+
+## Fromages 🧀
+
+Le dataset `fromage.txt` décrit les caractéristiques alimentaires de différents fromages.
+
+Voici la présentation du jeu de données :
+
+* `calories` 
+* `sodium` 
+* `calcium` 
+* `Calories` 
+* `lipides` 
+* `retinol` 
+* `folates` 
+* `proteines` 
+* `cholesterol` 
+* `magnesium` 
+
+
+```{r, warning=FALSE, message=FALSE}
+fromage <- read.delim("./datasets/fromage.txt", row.names=1)
+```
+
+
+```{r}
+dim(fromage)
+```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(head(fromage,n = 20), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+```
+
+## Hotdogs 🌭
+
+Le dataset `Hotdogs.csv` décrit les caractéristiques alimentaires de différents Hotdogs.
+
+Voici la présentation du jeu de données :
+
+* `Type` : type de viande
+* `Calories` : le nombre de calories
+* `Sodium` : la teneur en sodium
+
+```{r, warning=FALSE, message=FALSE}
+Hotdogs <- read.csv("./datasets/Hotdogs.csv", sep=";")
+```
+
+
+```{r}
+dim(Hotdogs)
+```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(head(Hotdogs,n = 20), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+```
+
+
+## Pokemon 🐾
+
+Le dataset `pokemon.xlsx` décrit les statistiques des pokemon des deux premières générations.
+Le fichier est issu du site [ Kaggle ](https://www.kaggle.com/rounakbanik/pokemon). Il a été adapté dans ce livre
+
+Voici la présentation du jeu de données :
+
+* `pokedex_number` : numéro du pokemon
+* `nom` : nom du pokemon
+* `generation` : le numéro de génération dont est issu le pokemon
+* `is_legendary` : Oui / Non si le pokemon est légendaire
+* `type` : le type du pokemon
+* `weight_kg` : le poids du pokemon en kg
+* `height_m` : la taille du pokemon en mètre
+* `attack` : la puissance d'attaque du pokemon
+* `defense` : la puissance de défense du pokemon
+* `speed` : la vitesse du pokemon
+
+
+
+
+
+```{r, warning=FALSE, message=FALSE}
+library(readxl)
+pokemon <- read_excel(path = "./datasets/pokemon.xlsx", sheet = "pokemon")
+```
+
+
+```{r}
+dim(pokemon)
+```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(head(pokemon,n = 20), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+```
+
+## Titanic 🧊⛴
+
+Le dataset `Titanic.csv` décrit les informations des passagers présents lors du naufrage du Titanic. 
+
+Voici la présentation du jeu de données :
+
+* `Name` : le nom du passager
+* `PClass` : la classe du passager (*1st*,*2nd* ou *3rd*)
+* `Age` : l'âge du passager
+* `Sex` : le genre du passager 
+* `Survived` : 1 si le passager a survécu
+* `SexCode` : le genre du passager en binaire 0/1
+
+```{r, warning=FALSE, message=FALSE}
+Titanic <- read.csv("./datasets/Titanic.csv", row.names=1)
+```
+
+
+```{r}
+dim(Titanic)
+```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(head(Titanic,n = 20), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+```
+
+
+## ToothGrowth 🦷
+
+Ce jeu de données est présent dans le *datasets.*
+On étudie la longueur des odontoblastes (cellules responsables de la croissance dentaire) chez 60 cobayes. Chaque animal a reçu l’une des trois doses de vitamine C (0,5, 1 et 2 mg / jour) par l’une des deux méthodes d’administration, du jus d’orange ou de l’acide ascorbique (une forme de vitamine C et codée VC) :
+
+Voici la présentation du jeu de données :
+
+* `len` : lLongueur de la dent
+* `supp` : supplément (VC ou OJ).
+* `dose` : dose en milligrammes / jour
+
+```{r}
+dim(ToothGrowth)
+```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+kable(head(ToothGrowth,n = 20), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+```
+

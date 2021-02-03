@@ -4,5 +4,5 @@ language:
   ui:
     chapter_name: "Chapitre "
 delete_merged_file: true
-rmd_files: ["index.Rmd", "independance.Rmd"]
+rmd_files: ["index.Rmd", "independance.Rmd","99_TP.Rmd","99_dataset.Rmd"]
 

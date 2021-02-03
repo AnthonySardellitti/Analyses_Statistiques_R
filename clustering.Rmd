@@ -1,0 +1,26 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Clustering {#clustering}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(knitr)
+library(kableExtra)
+library(dplyr)
+taille <- 12
+```
+
+
+## K-Means
+
+
+## DBSCAN
+
+
+## Classification Ascendante Hiérarchique
+
+
+

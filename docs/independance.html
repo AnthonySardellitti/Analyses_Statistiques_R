@@ -24,7 +24,7 @@
 <meta name="author" content="Anthony SARDELLITTI" />
 
 
-<meta name="date" content="2021-01-30" />
+<meta name="date" content="2021-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html"/>
-
+<link rel="next" href="entrainement.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -155,6 +155,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.3" data-path="independance.html"><a href="independance.html#effet-lintéraction-entre-les-deux-facteurs"><i class="fa fa-check"></i><b>2.4.3</b> Effet l’intéraction entre les deux facteurs</a></li>
 <li class="chapter" data-level="2.4.4" data-path="independance.html"><a href="independance.html#calcul-de-lanova-2"><i class="fa fa-check"></i><b>2.4.4</b> Calcul de l’ANOVA 2</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="entrainement.html"><a href="entrainement.html"><i class="fa fa-check"></i><b>3</b> S’entrainer</a><ul>
+<li class="chapter" data-level="3.1" data-path="entrainement.html"><a href="entrainement.html#tp1"><i class="fa fa-check"></i><b>3.1</b> TP1</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="all-dataset.html"><a href="all-dataset.html"><i class="fa fa-check"></i><b>4</b> Jeux de données utilisés</a><ul>
+<li class="chapter" data-level="4.1" data-path="all-dataset.html"><a href="all-dataset.html#iris"><i class="fa fa-check"></i><b>4.1</b> Iris 🌺</a></li>
+<li class="chapter" data-level="4.2" data-path="all-dataset.html"><a href="all-dataset.html#fromages"><i class="fa fa-check"></i><b>4.2</b> Fromages 🧀</a></li>
+<li class="chapter" data-level="4.3" data-path="all-dataset.html"><a href="all-dataset.html#hotdogs"><i class="fa fa-check"></i><b>4.3</b> Hotdogs 🌭</a></li>
+<li class="chapter" data-level="4.4" data-path="all-dataset.html"><a href="all-dataset.html#pokemon"><i class="fa fa-check"></i><b>4.4</b> Pokemon 🐾</a></li>
+<li class="chapter" data-level="4.5" data-path="all-dataset.html"><a href="all-dataset.html#titanic-1"><i class="fa fa-check"></i><b>4.5</b> Titanic 🧊⛴</a></li>
+<li class="chapter" data-level="4.6" data-path="all-dataset.html"><a href="all-dataset.html#toothgrowth"><i class="fa fa-check"></i><b>4.6</b> ToothGrowth 🦷</a></li>
 </ul></li>
 </ul>
 
@@ -542,33 +553,33 @@ Un coefficient de corrélation de 0.14 n’aura pas la même significativité su
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  x and y
-## t = 0.028197, df = 19, p-value = 0.9778
+## t = -0.012015, df = 19, p-value = 0.9905
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  -0.4264087  0.4369354
+##  -0.4339269  0.4294413
 ## sample estimates:
-##         cor 
-## 0.006468781</code></pre>
+##          cor 
+## -0.002756508</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="independance.html#cb20-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Spearman&#39;s rank correlation rho
 ## 
 ## data:  x and y
-## S = 1518, p-value = 0.9528
+## S = 1582, p-value = 0.9079
 ## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
-##        rho 
-## 0.01428571</code></pre>
+##         rho 
+## -0.02727273</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="independance.html#cb22-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Kendall&#39;s rank correlation tau
 ## 
 ## data:  x and y
-## T = 105, p-value = 1
+## T = 103, p-value = 0.9287
 ## alternative hypothesis: true tau is not equal to 0
 ## sample estimates:
-## tau 
-##   0</code></pre>
+##         tau 
+## -0.01904762</code></pre>
 </div>
 </div>
 <div id="test-du-chi²" class="section level2">
@@ -2139,8 +2150,8 @@ OJ
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="entrainement.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

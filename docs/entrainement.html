@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 3 S’entrainer | La data science avec R</title>
+  <meta name="description" content="Chapitre 3 S’entrainer | La data science avec R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 3 S’entrainer | La data science avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapitre 3 S’entrainer | La data science avec R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 3 S’entrainer | La data science avec R" />
+  
+  <meta name="twitter:description" content="Chapitre 3 S’entrainer | La data science avec R" />
+  
+
+<meta name="author" content="Anthony SARDELLITTI" />
+
+
+<meta name="date" content="2021-02-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="independance.html"/>
+<link rel="next" href="all-dataset.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préface</a></li>
+<li class="chapter" data-level="2" data-path="independance.html"><a href="independance.html"><i class="fa fa-check"></i><b>2</b> Test indépendance</a><ul>
+<li class="chapter" data-level="2.1" data-path="independance.html"><a href="independance.html#test-de-corrélation"><i class="fa fa-check"></i><b>2.1</b> Test de corrélation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="independance.html"><a href="independance.html#lipide-vs-magnesium"><i class="fa fa-check"></i><b>2.1.1</b> Lipide vs Magnesium</a></li>
+<li class="chapter" data-level="2.1.2" data-path="independance.html"><a href="independance.html#sodium-vs-retinol"><i class="fa fa-check"></i><b>2.1.2</b> Sodium vs Retinol</a></li>
+<li class="chapter" data-level="2.1.3" data-path="independance.html"><a href="independance.html#matrice-des-p-values"><i class="fa fa-check"></i><b>2.1.3</b> Matrice des p-values</a></li>
+<li class="chapter" data-level="2.1.4" data-path="independance.html"><a href="independance.html#cas-de-relation-non-linéaire"><i class="fa fa-check"></i><b>2.1.4</b> Cas de relation non linéaire</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="independance.html"><a href="independance.html#test-du-chi²"><i class="fa fa-check"></i><b>2.2</b> Test du CHI²</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="independance.html"><a href="independance.html#titanic"><i class="fa fa-check"></i><b>2.2.1</b> Titanic</a></li>
+<li class="chapter" data-level="2.2.2" data-path="independance.html"><a href="independance.html#exemple-du-support"><i class="fa fa-check"></i><b>2.2.2</b> Exemple du support</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="independance.html"><a href="independance.html#anova-1"><i class="fa fa-check"></i><b>2.3</b> ANOVA 1</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="independance.html"><a href="independance.html#lindépendance"><i class="fa fa-check"></i><b>2.3.1</b> L’indépendance</a></li>
+<li class="chapter" data-level="2.3.2" data-path="independance.html"><a href="independance.html#légalité-des-variances"><i class="fa fa-check"></i><b>2.3.2</b> L’égalité des variances</a></li>
+<li class="chapter" data-level="2.3.3" data-path="independance.html"><a href="independance.html#normalité-des-résidus"><i class="fa fa-check"></i><b>2.3.3</b> Normalité des résidus</a></li>
+<li class="chapter" data-level="2.3.4" data-path="independance.html"><a href="independance.html#calcul---cas-des-variances-égales"><i class="fa fa-check"></i><b>2.3.4</b> Calcul - Cas des variances égales</a></li>
+<li class="chapter" data-level="2.3.5" data-path="independance.html"><a href="independance.html#calcul---cas-des-variances-inégales"><i class="fa fa-check"></i><b>2.3.5</b> Calcul - Cas des variances inégales</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="independance.html"><a href="independance.html#anova-2"><i class="fa fa-check"></i><b>2.4</b> ANOVA 2</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="independance.html"><a href="independance.html#effet-de-la-variable-supp"><i class="fa fa-check"></i><b>2.4.1</b> Effet de la variable <code>supp</code></a></li>
+<li class="chapter" data-level="2.4.2" data-path="independance.html"><a href="independance.html#effet-de-la-variable-dose"><i class="fa fa-check"></i><b>2.4.2</b> Effet de la variable <code>dose</code></a></li>
+<li class="chapter" data-level="2.4.3" data-path="independance.html"><a href="independance.html#effet-lintéraction-entre-les-deux-facteurs"><i class="fa fa-check"></i><b>2.4.3</b> Effet l’intéraction entre les deux facteurs</a></li>
+<li class="chapter" data-level="2.4.4" data-path="independance.html"><a href="independance.html#calcul-de-lanova-2"><i class="fa fa-check"></i><b>2.4.4</b> Calcul de l’ANOVA 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="entrainement.html"><a href="entrainement.html"><i class="fa fa-check"></i><b>3</b> S’entrainer</a><ul>
+<li class="chapter" data-level="3.1" data-path="entrainement.html"><a href="entrainement.html#tp1"><i class="fa fa-check"></i><b>3.1</b> TP1</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="all-dataset.html"><a href="all-dataset.html"><i class="fa fa-check"></i><b>4</b> Jeux de données utilisés</a><ul>
+<li class="chapter" data-level="4.1" data-path="all-dataset.html"><a href="all-dataset.html#iris"><i class="fa fa-check"></i><b>4.1</b> Iris 🌺</a></li>
+<li class="chapter" data-level="4.2" data-path="all-dataset.html"><a href="all-dataset.html#fromages"><i class="fa fa-check"></i><b>4.2</b> Fromages 🧀</a></li>
+<li class="chapter" data-level="4.3" data-path="all-dataset.html"><a href="all-dataset.html#hotdogs"><i class="fa fa-check"></i><b>4.3</b> Hotdogs 🌭</a></li>
+<li class="chapter" data-level="4.4" data-path="all-dataset.html"><a href="all-dataset.html#pokemon"><i class="fa fa-check"></i><b>4.4</b> Pokemon 🐾</a></li>
+<li class="chapter" data-level="4.5" data-path="all-dataset.html"><a href="all-dataset.html#titanic-1"><i class="fa fa-check"></i><b>4.5</b> Titanic 🧊⛴</a></li>
+<li class="chapter" data-level="4.6" data-path="all-dataset.html"><a href="all-dataset.html#toothgrowth"><i class="fa fa-check"></i><b>4.6</b> ToothGrowth 🦷</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">La data science avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="entrainement" class="section level1">
+<h1><span class="header-section-number">Chapitre 3</span> S’entrainer</h1>
+<div id="tp1" class="section level2">
+<h2><span class="header-section-number">3.1</span> TP1</h2>
+<p>
+<img src="img/pokemon.jpg" title="fig:" alt="Pokemo*" />
+</p>
+<p>Ce TP reprend quelques rappels de R.
+On utilise le fichier <code>pokemon.xlsx</code> qui décrit les statistiques des pokemon des deux premières générations.
+Le fichier est issu du site <a href="https://www.kaggle.com/rounakbanik/pokemon">Kaggle</a>. Il a été adapté pour ce TP. Pour réaliser ce TP, télécharger le fichier en <a href="https://github.com/AnthonySardellitti/datascience-r/tree/master/dataset">cliquant ici</a>.Voici une description des données :</p>
+<ul>
+<li><code>pokedex_number</code> : numéro du pokemon</li>
+<li><code>nom</code> : nom du pokemon</li>
+<li><code>generation</code> : le numéro de génération dont est issu le pokemon</li>
+<li><code>is_legendary</code> : Oui / Non si le pokemon est légendaire</li>
+<li><code>type</code> : le type du pokemon</li>
+<li><code>weight_kg</code> : le poids du pokemon en kg</li>
+<li><code>height_m</code> : la taille du pokemon en mètre</li>
+<li><code>attack</code> : la puissance d’attaque du pokemon</li>
+<li><code>defense</code> : la puissance de défense du pokemon</li>
+<li><code>speed</code> : la vitesse du pokemon</li>
+</ul>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pokedex_number
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+nom
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+generation
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+is_legendary
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+type
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+weight_kg
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+height_m
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+attack
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+defense
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+speed
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Bulbizarre
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+grass
+</td>
+<td style="text-align:right;">
+6.9
+</td>
+<td style="text-align:right;">
+0.7
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Herbizarre
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+grass
+</td>
+<td style="text-align:right;">
+13.0
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Florizarre
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+grass
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+80
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Salameche
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+fire
+</td>
+<td style="text-align:right;">
+8.5
+</td>
+<td style="text-align:right;">
+0.6
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Reptincel
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+fire
+</td>
+<td style="text-align:right;">
+19.0
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+80
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Dracaufeu
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+fire
+</td>
+<td style="text-align:right;">
+90.5
+</td>
+<td style="text-align:right;">
+1.7
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Carapuce
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+water
+</td>
+<td style="text-align:right;">
+9.0
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Carabaffe
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+water
+</td>
+<td style="text-align:right;">
+22.5
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Tortank
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+water
+</td>
+<td style="text-align:right;">
+85.5
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+78
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Chenipan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+bug
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Chrysacier
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+bug
+</td>
+<td style="text-align:right;">
+9.9
+</td>
+<td style="text-align:right;">
+0.7
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+Papilusion
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+bug
+</td>
+<td style="text-align:right;">
+32.0
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+70
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Aspicot
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+bug
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Coconfort
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+bug
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+0.6
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Dardargnan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+bug
+</td>
+<td style="text-align:right;">
+29.5
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+145
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+Roucool
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+normal
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Roucoups
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+normal
+</td>
+<td style="text-align:right;">
+30.0
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+71
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Roucarnage
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+normal
+</td>
+<td style="text-align:right;">
+39.5
+</td>
+<td style="text-align:right;">
+1.5
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+121
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+Rattata
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+normal
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+72
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Rattatac
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Non
+</td>
+<td style="text-align:left;">
+normal
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<p><strong>Exercice 1 : Importer les données</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li>Importez le jeu de données <code>pokemon.xlsx</code> à l’aide du package <code>readxl</code>.</li>
+<li>Combien de lignes, colonnes sont présentes dans ce dataset (utilisez les fonctions adaptées) ?</li>
+<li>Affichez le nom des colonnes.</li>
+<li>Affichez le type des colonnes avec la fonction adaptée.</li>
+<li>On souhaite analyser les variables <code>generation</code>, <code>is_legendary</code>, et <code>type</code> en tant que variables qualitatives. Modifier le type de ces variables pour les transformer en type factor.</li>
+<li>Combien de niveaux (<em>levels</em>) sont présents dans ces variables ?</li>
+<li>Affichez un résumé des données avec la fonction adaptée.</li>
+</ol>
+<p><strong>Exercice 2 : Statistiques descriptives</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li>Déterminer la moyenne de la variable <code>weight_kg</code>.</li>
+<li>Déterminer la médiane de la variable <code>weight_kg</code>.</li>
+<li>Déterminer les quartiles de la variable <code>height_m</code>.</li>
+<li>Déterminer les déciles de la variable <code>height_m</code>.</li>
+<li>Déterminer la variance et l’écart-type de la variable <code>weight_kg</code>.</li>
+<li>Déterminer un tri à plat pour compter les effectifs des modalités de chaque variable <em>factor</em> en triant chaque sortie par ordre décroissant.</li>
+</ol>
+<p><strong>Exercice 3 : Tris et Selections</strong></p>
+<p>Pour chaque question suivante, affectez le résultat de la requête dans un objet puis calculez sa dimension. Exemple :</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="entrainement.html#cb97-1"></a><span class="co">#Selectionnez les deux premières colonnes du data frame</span></span>
+<span id="cb97-2"><a href="entrainement.html#cb97-2"></a>requete_<span class="dv">0</span> &lt;-<span class="st"> </span>pokemon[,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span>
+<span id="cb97-3"><a href="entrainement.html#cb97-3"></a><span class="kw">dim</span>(requete_<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1] 251   2</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Sélectionnez la colonne <code>nom</code> et <code>is_legendary</code>.</li>
+<li>Sélectionnez les 50 premières lignes et les deux premières colonnes.</li>
+<li>Sélectionnez les 10 premières lignes et toutes les colonnes.</li>
+<li>Sélectionnez toutes les colonnes sauf la dernière.</li>
+<li>Sélectionnez les colonnes 2,8,9 et 10.</li>
+<li>Sélectionnez les lignes 20 à 30 et 80 à 100.</li>
+<li>Triez le dataset par ordre alphabétique et afficher le <code>nom</code> du pokemon dela première ligne.</li>
+<li>Triez le dataset par <code>weight_kg</code> en ordre <strong>décroissant</strong>, et afficher le <code>nom</code>du pokemon de la première ligne</li>
+<li>Triez le dataset par <code>attack</code> en ordre <strong>décroissant</strong> puis par <code>speed</code> en ordre <strong>croissant</strong>, et afficher le <code>nom</code> des pokemons des 10 premières lignes.</li>
+</ol>
+<p><strong>Exercice 4 : Tris et Filtres</strong></p>
+<p>Pour chaque question suivante, affectez le résultat de la requête dans un objet puis calculez sa dimension. Pour faciliter la lecture, sélectionnez la colonne <code>nom</code>et les colonnes concernées par le filtre. Exemple :</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="entrainement.html#cb99-1"></a><span class="co">#Selectionnez les pokemons de type feu</span></span>
+<span id="cb99-2"><a href="entrainement.html#cb99-2"></a>requete_<span class="dv">0</span> &lt;-<span class="st"> </span>pokemon[ pokemon<span class="op">$</span>type <span class="op">==</span><span class="st"> &quot;fire&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;nom&quot;</span>,<span class="st">&quot;type&quot;</span>)]</span>
+<span id="cb99-3"><a href="entrainement.html#cb99-3"></a><span class="kw">dim</span>(requete_<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## [1] 20  2</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Filtrez sur les pokemons qui ont 150 ou plus d’<code>attack</code> puis trier le résultat par ordre décroissant d’<code>attack</code>.</li>
+<li>Filtrez sur les pokemons de <code>type</code> <em>dragon</em>,<em>ghost</em>,<em>psychic</em> et <em>dark</em></li>
+<li>Filtrez sur les pokemons de <code>type</code> <em>fire</em> avec plus de 100 d’<code>attack</code>, puis trier le résultat par ordre décroissant d’<code>attack</code>.</li>
+<li>Filtrez sur les pokemons qui ont entre 100 et 150 de <code>speed</code>. Les trier par <code>speed</code>décroissant.</li>
+<li>Filtrez sur les pokemons pesant plus de 250 kg et affichez le résultat pour vérifier.</li>
+<li>Filtrez sur les pokémons qui ont des valeurs manquantes sur la variable <code>height_m</code>.</li>
+<li>Filtrez sur les pokemons qui ont des valeurs renseignées à la fois pour la variable <code>weight_kg</code> <strong>et</strong> la variable <code>height</code>.</li>
+</ol>
+<p><strong>Exercice 5 : Corrélation</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Analysez les coefficients de corrélations des variables quantitatives <code>weight_kg</code>, <code>height_m</code>, <code>attack</code>, <code>defense</code>, <code>speed</code>. Il est conseillé d’utiliser la matrice des corrélations et la visualisation adaptée.</p></li>
+<li><p>Représentez graphiquement les 3 couples de variables avec les coefficients de corrélations les plus élevés.</p></li>
+<li><p>Effectuez un test d’indépendance sur le couple de variables avec le coefficient de corrélation le plus bas. N’oubliez pas de poser les hypothèses.</p></li>
+<li><p>Effectuez un test d’indépendance sur le couple de variables avec le coefficient de corrélation le plus élevé. N’oubliez pas de poser les hypothèses.</p></li>
+</ol>
+<p><strong>Exercice 6 : Anova</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Dupliquer le data frame avec uniquement les pokemons de type <code>water</code>, <code>fire</code>, et <code>grass</code>.</p></li>
+<li><p>Déterminer s’il y a indépendance entre ces <code>type</code> et l’ <code>attack</code>.</p></li>
+<li><p>Déterminer s’il y a indépendance entre ces <code>type</code> et l’ <code>speed</code>.</p></li>
+<li><p>Déterminer s’il y a indépendance entre ces <code>type</code> et l’ <code>weight_kg</code>.</p></li>
+<li><p>Déterminer s’il y a indépendance entre ces <code>type</code> et l’ <code>height_m</code>.</p></li>
+<li><p>Déterminer s’il y a indépendance entre ces <code>type</code> et l’ <code>defense</code>.</p></li>
+<li><p>Le <code>type</code> et la <code>generation</code> ont-il une influence sur l’<code>attack</code> ?</p></li>
+</ol>
+<p><strong>Exercice 7 : Clustering</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Avec la méthode des K-Means, construire un clustering en 3 classes d’après les variables quantitatives <code>weight_kg</code>, <code>height_m</code>, <code>attack</code>, <code>defense</code>, <code>speed</code>.</p></li>
+<li><p>Faire varier le nombre de classe pour déterminer le nombre de cluster le plus pertinent.</p></li>
+<li><p>Expliquer les classes en décrivant graphiquement les clusters identifiés.</p></li>
+<li><p>Avez-vous centré et réduit les données sur les questions a à c ? Non ? Alors c’est reparti ! Il se peut que les clusters varient considérablement.</p></li>
+<li><p>Proposer une autre segmentation avec une méthode de clustering hiérarchique</p></li>
+<li><p>On observe des pokemons atypiques qui faussent nos deux méthodes de segmentation. Essayez de les identifier avec une méthode de clustering par densité pour les exclures</p></li>
+<li><p>Après avoir exclus les outliers, on peut refaire une segmentation avec la méthode de votre choix.</p></li>
+<li><p>Expliquer les classes en décrivant graphiquement les clusters identifiés.</p></li>
+</ol>
+<p><strong>Exercice 8 : ACP</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Construire une Analyse en Composantes Principales sur les variables quantitatives</p></li>
+<li><p>Afficher la répartition de variances expliquées de chacun des axes. Combien d’axes est-il pertinent de conserver ?</p></li>
+<li><p>Construire puis interpreter le cercle des corrélations.</p></li>
+<li><p>Projeter les coordonnées des individus sur les deux premiers axes.</p></li>
+<li><p>Quelles est la variable qui contribue le plus à la création du facteur 1, et du facteur 2 ?</p></li>
+<li><p>Quel est le pokémon qui contribue le plus à la création du facteur 1, et du facteur 2 ?</p></li>
+<li><p>Proposer un clustering hiérarchique basé sur les résultat de l’ACP</p></li>
+<li><p>Expliquer les classes en décrivant graphiquement les clusters identifiés.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="independance.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="all-dataset.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
