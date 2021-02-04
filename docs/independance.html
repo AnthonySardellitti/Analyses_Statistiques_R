@@ -24,7 +24,7 @@
 <meta name="author" content="Anthony SARDELLITTI" />
 
 
-<meta name="date" content="2021-02-03" />
+<meta name="date" content="2021-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,6 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="entrainement.html"><a href="entrainement.html"><i class="fa fa-check"></i><b>3</b> S’entrainer</a><ul>
 <li class="chapter" data-level="3.1" data-path="entrainement.html"><a href="entrainement.html#tp1"><i class="fa fa-check"></i><b>3.1</b> TP1</a></li>
+<li class="chapter" data-level="3.2" data-path="entrainement.html"><a href="entrainement.html#tp2"><i class="fa fa-check"></i><b>3.2</b> TP2</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="all-dataset.html"><a href="all-dataset.html"><i class="fa fa-check"></i><b>4</b> Jeux de données utilisés</a><ul>
 <li class="chapter" data-level="4.1" data-path="all-dataset.html"><a href="all-dataset.html#iris"><i class="fa fa-check"></i><b>4.1</b> Iris 🌺</a></li>
@@ -166,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="all-dataset.html"><a href="all-dataset.html#pokemon"><i class="fa fa-check"></i><b>4.4</b> Pokemon 🐾</a></li>
 <li class="chapter" data-level="4.5" data-path="all-dataset.html"><a href="all-dataset.html#titanic-1"><i class="fa fa-check"></i><b>4.5</b> Titanic 🧊⛴</a></li>
 <li class="chapter" data-level="4.6" data-path="all-dataset.html"><a href="all-dataset.html#toothgrowth"><i class="fa fa-check"></i><b>4.6</b> ToothGrowth 🦷</a></li>
+<li class="chapter" data-level="4.7" data-path="all-dataset.html"><a href="all-dataset.html#nba"><i class="fa fa-check"></i><b>4.7</b> NBA 🏀</a></li>
 </ul></li>
 </ul>
 
@@ -553,33 +555,33 @@ Un coefficient de corrélation de 0.14 n’aura pas la même significativité su
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  x and y
-## t = -0.012015, df = 19, p-value = 0.9905
+## t = -0.0059598, df = 19, p-value = 0.9953
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  -0.4339269  0.4294413
+##  -0.4327986  0.4305736
 ## sample estimates:
 ##          cor 
-## -0.002756508</code></pre>
+## -0.001367272</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="independance.html#cb20-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Spearman&#39;s rank correlation rho
 ## 
 ## data:  x and y
-## S = 1582, p-value = 0.9079
+## S = 1506, p-value = 0.9258
 ## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
-##         rho 
-## -0.02727273</code></pre>
+##        rho 
+## 0.02207792</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="independance.html#cb22-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Kendall&#39;s rank correlation tau
 ## 
 ## data:  x and y
-## T = 103, p-value = 0.9287
+## T = 107, p-value = 0.9287
 ## alternative hypothesis: true tau is not equal to 0
 ## sample estimates:
-##         tau 
-## -0.01904762</code></pre>
+##        tau 
+## 0.01904762</code></pre>
 </div>
 </div>
 <div id="test-du-chi²" class="section level2">

@@ -200,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>Petal.Width</code> : largeur du pétale</li>
 <li><code>Species</code> : l’espèce de la fleur</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="all-dataset.html#cb1-1"></a><span class="kw">dim</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="all-dataset.html#cb101-1"></a><span class="kw">dim</span>(iris)</span></code></pre></div>
 <pre><code>## [1] 150   5</code></pre>
 <p>Voici un extrait du dataset :</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
@@ -585,8 +585,8 @@ setosa
 <li><code>cholesterol</code></li>
 <li><code>magnesium</code></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="all-dataset.html#cb3-1"></a>fromage &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;./datasets/fromage.txt&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="all-dataset.html#cb4-1"></a><span class="kw">dim</span>(fromage)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="all-dataset.html#cb103-1"></a>fromage &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;./datasets/fromage.txt&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="all-dataset.html#cb104-1"></a><span class="kw">dim</span>(fromage)</span></code></pre></div>
 <pre><code>## [1] 29  9</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -1277,8 +1277,8 @@ Parmesan
 <li><code>Calories</code> : le nombre de calories</li>
 <li><code>Sodium</code> : la teneur en sodium</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="all-dataset.html#cb6-1"></a>Hotdogs &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./datasets/Hotdogs.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="all-dataset.html#cb7-1"></a><span class="kw">dim</span>(Hotdogs)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="all-dataset.html#cb106-1"></a>Hotdogs &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./datasets/Hotdogs.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="all-dataset.html#cb107-1"></a><span class="kw">dim</span>(Hotdogs)</span></code></pre></div>
 <pre><code>## [1] 54  3</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -1537,9 +1537,9 @@ Le fichier est issu du site <a href="https://www.kaggle.com/rounakbanik/pokemon"
 <li><code>defense</code> : la puissance de défense du pokemon</li>
 <li><code>speed</code> : la vitesse du pokemon</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="all-dataset.html#cb9-1"></a><span class="kw">library</span>(readxl)</span>
-<span id="cb9-2"><a href="all-dataset.html#cb9-2"></a>pokemon &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="dt">path =</span> <span class="st">&quot;./datasets/pokemon.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;pokemon&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="all-dataset.html#cb10-1"></a><span class="kw">dim</span>(pokemon)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="all-dataset.html#cb109-1"></a><span class="kw">library</span>(readxl)</span>
+<span id="cb109-2"><a href="all-dataset.html#cb109-2"></a>pokemon &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="dt">path =</span> <span class="st">&quot;./datasets/pokemon.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;pokemon&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="all-dataset.html#cb110-1"></a><span class="kw">dim</span>(pokemon)</span></code></pre></div>
 <pre><code>## [1] 251  10</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -2234,8 +2234,8 @@ NA
 <li><code>Survived</code> : 1 si le passager a survécu</li>
 <li><code>SexCode</code> : le genre du passager en binaire 0/1</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="all-dataset.html#cb12-1"></a>Titanic &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./datasets/Titanic.csv&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="all-dataset.html#cb13-1"></a><span class="kw">dim</span>(Titanic)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="all-dataset.html#cb112-1"></a>Titanic &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./datasets/Titanic.csv&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="all-dataset.html#cb113-1"></a><span class="kw">dim</span>(Titanic)</span></code></pre></div>
 <pre><code>## [1] 1313    6</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -2676,7 +2676,7 @@ On étudie la longueur des odontoblastes (cellules responsables de la croissance
 <li><code>supp</code> : supplément (VC ou OJ).</li>
 <li><code>dose</code> : dose en milligrammes / jour</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="all-dataset.html#cb15-1"></a><span class="kw">dim</span>(ToothGrowth)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="all-dataset.html#cb115-1"></a><span class="kw">dim</span>(ToothGrowth)</span></code></pre></div>
 <pre><code>## [1] 60  3</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -2936,7 +2936,7 @@ VC
 <li><code>CLOSE_DEF_DIST</code> : Distance entre le tireur et le défenseur le plus proche en <em>foot</em> (<em>1 foot = 0,30 mètre</em>)</li>
 <li><code>SHOOTER</code> : Nom du tireur</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="all-dataset.html#cb17-1"></a><span class="kw">dim</span>(NBA)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="all-dataset.html#cb117-1"></a><span class="kw">dim</span>(NBA)</span></code></pre></div>
 <pre><code>## [1] 128069     12</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
