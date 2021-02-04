@@ -24,7 +24,7 @@
 <meta name="author" content="Anthony SARDELLITTI" />
 
 
-<meta name="date" content="2021-02-03" />
+<meta name="date" content="2021-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,6 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="entrainement.html"><a href="entrainement.html"><i class="fa fa-check"></i><b>3</b> S’entrainer</a><ul>
 <li class="chapter" data-level="3.1" data-path="entrainement.html"><a href="entrainement.html#tp1"><i class="fa fa-check"></i><b>3.1</b> TP1</a></li>
+<li class="chapter" data-level="3.2" data-path="entrainement.html"><a href="entrainement.html#tp2"><i class="fa fa-check"></i><b>3.2</b> TP2</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="all-dataset.html"><a href="all-dataset.html"><i class="fa fa-check"></i><b>4</b> Jeux de données utilisés</a><ul>
 <li class="chapter" data-level="4.1" data-path="all-dataset.html"><a href="all-dataset.html#iris"><i class="fa fa-check"></i><b>4.1</b> Iris 🌺</a></li>
@@ -166,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="all-dataset.html"><a href="all-dataset.html#pokemon"><i class="fa fa-check"></i><b>4.4</b> Pokemon 🐾</a></li>
 <li class="chapter" data-level="4.5" data-path="all-dataset.html"><a href="all-dataset.html#titanic-1"><i class="fa fa-check"></i><b>4.5</b> Titanic 🧊⛴</a></li>
 <li class="chapter" data-level="4.6" data-path="all-dataset.html"><a href="all-dataset.html#toothgrowth"><i class="fa fa-check"></i><b>4.6</b> ToothGrowth 🦷</a></li>
+<li class="chapter" data-level="4.7" data-path="all-dataset.html"><a href="all-dataset.html#nba"><i class="fa fa-check"></i><b>4.7</b> NBA 🏀</a></li>
 </ul></li>
 </ul>
 
@@ -198,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>Petal.Width</code> : largeur du pétale</li>
 <li><code>Species</code> : l’espèce de la fleur</li>
 </ul>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="all-dataset.html#cb101-1"></a><span class="kw">dim</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="all-dataset.html#cb1-1"></a><span class="kw">dim</span>(iris)</span></code></pre></div>
 <pre><code>## [1] 150   5</code></pre>
 <p>Voici un extrait du dataset :</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
@@ -583,8 +585,8 @@ setosa
 <li><code>cholesterol</code></li>
 <li><code>magnesium</code></li>
 </ul>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="all-dataset.html#cb103-1"></a>fromage &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;./datasets/fromage.txt&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="all-dataset.html#cb104-1"></a><span class="kw">dim</span>(fromage)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="all-dataset.html#cb3-1"></a>fromage &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;./datasets/fromage.txt&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="all-dataset.html#cb4-1"></a><span class="kw">dim</span>(fromage)</span></code></pre></div>
 <pre><code>## [1] 29  9</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -1275,8 +1277,8 @@ Parmesan
 <li><code>Calories</code> : le nombre de calories</li>
 <li><code>Sodium</code> : la teneur en sodium</li>
 </ul>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="all-dataset.html#cb106-1"></a>Hotdogs &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./datasets/Hotdogs.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="all-dataset.html#cb107-1"></a><span class="kw">dim</span>(Hotdogs)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="all-dataset.html#cb6-1"></a>Hotdogs &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./datasets/Hotdogs.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="all-dataset.html#cb7-1"></a><span class="kw">dim</span>(Hotdogs)</span></code></pre></div>
 <pre><code>## [1] 54  3</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -1535,9 +1537,9 @@ Le fichier est issu du site <a href="https://www.kaggle.com/rounakbanik/pokemon"
 <li><code>defense</code> : la puissance de défense du pokemon</li>
 <li><code>speed</code> : la vitesse du pokemon</li>
 </ul>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="all-dataset.html#cb109-1"></a><span class="kw">library</span>(readxl)</span>
-<span id="cb109-2"><a href="all-dataset.html#cb109-2"></a>pokemon &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="dt">path =</span> <span class="st">&quot;./datasets/pokemon.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;pokemon&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="all-dataset.html#cb110-1"></a><span class="kw">dim</span>(pokemon)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="all-dataset.html#cb9-1"></a><span class="kw">library</span>(readxl)</span>
+<span id="cb9-2"><a href="all-dataset.html#cb9-2"></a>pokemon &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="dt">path =</span> <span class="st">&quot;./datasets/pokemon.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;pokemon&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="all-dataset.html#cb10-1"></a><span class="kw">dim</span>(pokemon)</span></code></pre></div>
 <pre><code>## [1] 251  10</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -2232,8 +2234,8 @@ NA
 <li><code>Survived</code> : 1 si le passager a survécu</li>
 <li><code>SexCode</code> : le genre du passager en binaire 0/1</li>
 </ul>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="all-dataset.html#cb112-1"></a>Titanic &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./datasets/Titanic.csv&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="all-dataset.html#cb113-1"></a><span class="kw">dim</span>(Titanic)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="all-dataset.html#cb12-1"></a>Titanic &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./datasets/Titanic.csv&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="all-dataset.html#cb13-1"></a><span class="kw">dim</span>(Titanic)</span></code></pre></div>
 <pre><code>## [1] 1313    6</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -2674,7 +2676,7 @@ On étudie la longueur des odontoblastes (cellules responsables de la croissance
 <li><code>supp</code> : supplément (VC ou OJ).</li>
 <li><code>dose</code> : dose en milligrammes / jour</li>
 </ul>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="all-dataset.html#cb115-1"></a><span class="kw">dim</span>(ToothGrowth)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="all-dataset.html#cb15-1"></a><span class="kw">dim</span>(ToothGrowth)</span></code></pre></div>
 <pre><code>## [1] 60  3</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -2910,6 +2912,833 @@ VC
 </td>
 <td style="text-align:right;">
 1.0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="nba" class="section level2">
+<h2><span class="header-section-number">4.7</span> NBA 🏀</h2>
+<p>Ce jeu de données <code>NBA.csv</code> décrit les tirs effectués au cours de la saison 2014-2015 de NBA. Le fichier est issu du site <a href="https://www.kaggle.com/dansbecker/nba-shot-logs">Kaggle</a>. Il a été adapté et modifié.</p>
+<p>Voici la présentation du jeu de données :</p>
+<ul>
+<li><code>GAME_ID</code> : ID du match</li>
+<li><code>LOCATION</code> : Lieu du match (<em>Home</em> / <em>Away</em>)</li>
+<li><code>GAME_RESULT</code> : Résultat du match (<em>Won</em> / <em>Lost</em>)</li>
+<li><code>PERIOD</code> : Numéro de quart-temps et prolongations éventuelles</li>
+<li><code>SHOT_CLOCK</code> : Durée de la possession de l’équipe au moment du tir</li>
+<li><code>DRIBBLES</code> : Nombre de dribbles avant le tir</li>
+<li><code>TOUCH_TIME</code> : Durée de la possession du joueur avant le tir</li>
+<li><code>SHOT_DIST</code> : Distance de tir en <em>foot</em> (<em>1 foot = 0,30 mètre</em>)</li>
+<li><code>PTS_TYPE</code> : Tentative à 2 ou 3 points (les lancers francs à 1 point ne sont pas répertoriés)</li>
+<li><code>SHOT_RESULT</code> : Résultat du tir (<em>made</em> / <em>missed</em>)</li>
+<li><code>CLOSE_DEF_DIST</code> : Distance entre le tireur et le défenseur le plus proche en <em>foot</em> (<em>1 foot = 0,30 mètre</em>)</li>
+<li><code>SHOOTER</code> : Nom du tireur</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="all-dataset.html#cb17-1"></a><span class="kw">dim</span>(NBA)</span></code></pre></div>
+<pre><code>## [1] 128069     12</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+GAME_ID
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+LOCATION
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GAME_RESULT
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PERIOD
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+SHOT_CLOCK
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+DRIBBLES
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+TOUCH_TIME
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+SHOT_DIST
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PTS_TYPE
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+SHOT_RESULT
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+CLOSE_DEF_DIST
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+SHOOTER
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+21400899
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10.8
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1.9
+</td>
+<td style="text-align:right;">
+7.7
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+made
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400899
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.8
+</td>
+<td style="text-align:right;">
+28.2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+6.1
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400899
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+10.1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400899
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1.9
+</td>
+<td style="text-align:right;">
+17.2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400899
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+3.7
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400899
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+9.1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4.4
+</td>
+<td style="text-align:right;">
+18.4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+2.6
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400899
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+14.5
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+9.0
+</td>
+<td style="text-align:right;">
+20.7
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+6.1
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400899
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3.4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+3.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+made
+</td>
+<td style="text-align:right;">
+2.1
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400899
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+12.4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.8
+</td>
+<td style="text-align:right;">
+24.6
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+7.3
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400890
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+17.4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+22.4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+19.8
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400890
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+16.0
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+7.5
+</td>
+<td style="text-align:right;">
+24.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+4.7
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400890
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+12.1
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+11.9
+</td>
+<td style="text-align:right;">
+14.6
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+made
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400890
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4.3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+<td style="text-align:right;">
+5.9
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+made
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400882
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4.4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.8
+</td>
+<td style="text-align:right;">
+26.4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+4.4
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400859
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6.8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+5.3
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400859
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+6.4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+24.7
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+made
+</td>
+<td style="text-align:right;">
+5.6
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400859
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+17.6
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+5.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400859
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+8.7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:right;">
+25.6
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+5.1
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400859
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+20.8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:right;">
+24.2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+made
+</td>
+<td style="text-align:right;">
+11.1
+</td>
+<td style="text-align:left;">
+brian roberts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21400845
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+17.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+25.4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+missed
+</td>
+<td style="text-align:right;">
+3.5
+</td>
+<td style="text-align:left;">
+brian roberts
 </td>
 </tr>
 </tbody>

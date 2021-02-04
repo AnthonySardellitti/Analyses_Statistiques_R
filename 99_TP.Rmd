@@ -4,12 +4,14 @@
 
 
 <p>
-![Pokemo*](./img/pokemon.jpg)
+![Pokemon](./img/pokemon.jpg)
 </p>
 
 Ce TP reprend quelques rappels de R.
 On utilise  le fichier `pokemon.xlsx` qui décrit les statistiques des pokemon des deux premières générations.
-Le fichier est issu du site [ Kaggle ](https://www.kaggle.com/rounakbanik/pokemon). Il a été adapté pour ce TP. Pour réaliser ce TP, télécharger le fichier en [cliquant ici](https://github.com/AnthonySardellitti/datascience-r/tree/master/dataset).Voici une description des données :
+Le fichier est issu du site [ Kaggle ](https://www.kaggle.com/rounakbanik/pokemon). Il a été adapté pour ce TP. Pour réaliser ce TP, télécharger le fichier en [cliquant ici](https://github.com/AnthonySardellitti/datascience-r/tree/master/datasets).
+
+Voici une description des données :
 
 - `pokedex_number` : numéro du pokemon
 - `nom` : nom du pokemon
@@ -48,7 +50,7 @@ b. Déterminer la médiane de la variable `weight_kg`.
 d. Déterminer les quartiles de la variable `height_m`.
 e. Déterminer les déciles de la variable `height_m`.
 f. Déterminer la variance et l'écart-type de la variable `weight_kg`.
-g. Déterminer un tri à plat pour compter les effectifs des modalités de chaque variable *factor* en triant chaque sortie par ordre décroissant.
+g. Déterminer un tri à plat pour compter les effectifs des modalités de chaque variable `factor` en triant chaque sortie par ordre décroissant.
 
 **Exercice 3 : Tris et Selections**
 
@@ -151,3 +153,91 @@ f. Quel est le pokémon qui contribue le plus à la création du facteur 1, et d
 g. Proposer un clustering hiérarchique basé sur les résultat de l'ACP
 
 h. Expliquer les classes en décrivant graphiquement les clusters identifiés.
+
+## TP2
+
+<p>
+![NBA](./img/nba.jpg)
+</p>
+
+Dans ce TP, vous travaillerez sur le jeu de données `NBA.csv` qui décrit les tirs effectués au cours de la saison 2014-2015 de NBA. Le fichier est issu du site [ Kaggle ](https://www.kaggle.com/dansbecker/nba-shot-logs). Il a été adapté et modifié pour ce TP. Pour réaliser ce TP, télécharger le fichier en [cliquant ici](https://github.com/AnthonySardellitti/datascience-r/tree/master/datasets).
+
+Voici la présentation du jeu de données :
+
+* `GAME_ID` : ID du match
+* `LOCATION` : Lieu du match (*Home* / *Away*)
+* `GAME_RESULT` : Résultat du match (*Won* / *Lost*)
+* `PERIOD` : Numéro de quart-temps et prolongations éventuelles
+* `SHOT_CLOCK` :  Durée de la possession de l'équipe au moment du tir
+* `DRIBBLES` : Nombre de dribbles avant le tir
+* `TOUCH_TIME` : Durée de la possession du joueur avant le tir
+* `SHOT_DIST` : Distance de tir en *foot* (*1 foot = 0,30 mètre*)
+* `PTS_TYPE` : Tentative à 2 ou 3 points (les lancers francs à 1 point ne sont pas répertoriés)
+* `SHOT_RESULT` : Résultat du tir (*made* / *missed*)
+* `CLOSE_DEF_DIST` : Distance entre le tireur et le défenseur le plus proche en *foot* (*1 foot = 0,30 mètre*)
+* `SHOOTER` : Nom du tireur
+
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+NBA <- read.csv("./datasets/NBA.csv")
+kable(head(NBA,n = 20), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+```
+<br>
+
+**Exercice 1 : Importer les données**
+
+a. Importer le jeu de données `NBA.csv`.
+
+b. Combien de lignes, colonnes sont présentes dans ce dataset (utilisez les fonctions adaptées) ?
+
+c. Afficher le nom des colonnes.
+
+d. Afficher le type des colonnes avec la fonction adaptée.
+
+e. On souhaite analyser les variables `LOCATION`, `GAME_RESULT`, `PERIOD`, `PTS_TYPE` et `SHOT_RESULT` en tant que variables qualitatives. Modifier le type de ces variables pour les transformer en type `factor`.
+
+f. Afficher un résumé des données avec la fonction adaptée.
+
+**Exercice 2 : Indépendance**
+
+a. Analyser les V de Cramer (fonction *cramer.v()* du package *questionr*) des variables qualitatives `LOCATION`, `GAME_RESULT`, `PERIOD`, `PTS_TYPE` et `SHOT_RESULT`. Il est conseillé d'utiliser une matrice avec les différentes valeurs.
+
+b. Représenter graphiquement les 2 couples de variables avec les V de Cramer les plus élevés.
+
+c. Effectuer un test d'indépendance sur le couple de variables avec le V de Cramer le plus bas. N'oublier pas de poser les hypothèses.
+
+d. Effectuer un test d'indépendance sur le couple de variables avec le V de Cramer le plus élevé. N'oublier pas de poser les hypothèses. 
+
+e. Construire la matrice des p-values des tests d'indépendance des variables `LOCATION`, `GAME_RESULT`, `PERIOD`, `PTS_TYPE` et `SHOT_RESULT`. Proposez
+
+**Exercice 3 : Régression**
+
+a. On cherche à prédire `SHOT_DIST` selon les variables `SHOT_CLOCK`, `DRIBBLES`, `TOUCH_TIME`, `CLOSE_DEF_DIST`. Dupliquer le dataset dans un autre objet avec uniquement les colonnes concernées.
+
+b. Construire un échantillon d'apprentissage et un échantillon test
+
+c. Construire une régression linéaire
+
+d. Tester le modèle sur l'échantillon d'apprentissage
+
+e. Evaluer le modèle en calculant le score **RMSE** entre les valeurs observées et les valeurs prédites.
+
+
+**Exercice 4 : Arbre de décision**
+
+
+a. Supprimer les colonnes `GAME_ID`, `GAME_RESULT` et `SHOOTER`.
+
+b. Construire un échantillon d'apprentissage et un échantillon test
+
+c. Construire un arbre de décision qui prédit si un tir va être marqué selon les autres variables explicatives.
+
+d. Visualiser l'arbre de décision
+
+e. Tester le modèle sur l'échantillon d'apprentissage
+
+f. Evaluer le modèle en calculant le taux de bonnes prédictions score entre les valeurs observées et les valeurs prédites.
+
+
+

@@ -174,3 +174,37 @@ dim(ToothGrowth)
 kable(head(ToothGrowth,n = 20), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
 ```
 
+## NBA 🏀
+
+Ce jeu de données `NBA.csv`  décrit les tirs effectués au cours de la saison 2014-2015 de NBA. Le fichier est issu du site [ Kaggle ](https://www.kaggle.com/dansbecker/nba-shot-logs). Il a été adapté et modifié.
+
+Voici la présentation du jeu de données :
+
+* `GAME_ID` : ID du match
+* `LOCATION` : Lieu du match (*Home* / *Away*)
+* `GAME_RESULT` : Résultat du match (*Won* / *Lost*)
+* `PERIOD` : Numéro de quart-temps et prolongations éventuelles
+* `SHOT_CLOCK` :  Durée de la possession de l'équipe au moment du tir
+* `DRIBBLES` : Nombre de dribbles avant le tir
+* `TOUCH_TIME` : Durée de la possession du joueur avant le tir
+* `SHOT_DIST` : Distance de tir en *foot* (*1 foot = 0,30 mètre*)
+* `PTS_TYPE` : Tentative à 2 ou 3 points (les lancers francs à 1 point ne sont pas répertoriés)
+* `SHOT_RESULT` : Résultat du tir (*made* / *missed*)
+* `CLOSE_DEF_DIST` : Distance entre le tireur et le défenseur le plus proche en *foot* (*1 foot = 0,30 mètre*)
+* `SHOOTER` : Nom du tireur
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+NBA <- read.csv("./datasets/NBA.csv")
+```
+
+```{r}
+dim(NBA)
+```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+NBA <- read.csv("./datasets/NBA.csv")
+kable(head(NBA,n = 20), "html") %>% kable_styling("striped", font_size = taille) %>% scroll_box(width = "100%", height = "400px")
+```
+
