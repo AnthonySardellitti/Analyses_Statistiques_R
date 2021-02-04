@@ -25,7 +25,7 @@ Les tests d'indépendances permettent de définir s'il existe un lien entre deux
 
 L'intérêt des tests de corrélation est d'apporter plus de pertinence et fiabilité aux coefficients de corrélation. Il existe différents test de corrélation, nous utilisons celui de Pearson.
 
-On travaille avec le jeu de données fromage 🧀
+On travaille avec le jeu de données fromage 🧀 disponible  en [cliquant ici](https://github.com/AnthonySardellitti/datascience-r/tree/master/datasets).
 
 ```{r}
 df <- read.csv(file = "./datasets/fromage.txt", sep = "\t", row.names = 1)
@@ -164,7 +164,7 @@ L'intérêt du test du Chi² est de mesurer l'indépendance entre deux variables
 
 ### Titanic
 
-On travaille sur le jeu de données Titanic 🧊⛴
+On travaille sur le jeu de données Titanic 🧊⛴ disponible  en [cliquant ici](https://github.com/AnthonySardellitti/datascience-r/tree/master/datasets).
 
 ```{r}
 df <- read.csv(file = "./datasets/Titanic.csv", row.names = 1)
@@ -258,7 +258,7 @@ H1 : Variables non indépendantes
 On effectue une analyse de variance pour mesurer l'indépendance entre une variable qualitative et une quantitative. 
 
 
-Pour illustrer cela, on utilise le jeu de données Hotdogs 🌭.
+Pour illustrer cela, on utilise le jeu de données Hotdogs 🌭  disponible  en [cliquant ici](https://github.com/AnthonySardellitti/datascience-r/tree/master/datasets).
 
 ```{r}
 df <- read.csv(file = "./datasets/Hotdogs.csv", 

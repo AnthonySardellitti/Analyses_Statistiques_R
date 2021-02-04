@@ -197,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="test-de-corrélation" class="section level2">
 <h2><span class="header-section-number">2.1</span> Test de corrélation</h2>
 <p>L’intérêt des tests de corrélation est d’apporter plus de pertinence et fiabilité aux coefficients de corrélation. Il existe différents test de corrélation, nous utilisons celui de Pearson.</p>
-<p>On travaille avec le jeu de données fromage 🧀</p>
+<p>On travaille avec le jeu de données fromage 🧀 disponible en <a href="https://github.com/AnthonySardellitti/datascience-r/tree/master/datasets">cliquant ici</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="independance.html#cb1-1"></a>df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./datasets/fromage.txt&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -555,33 +555,33 @@ Un coefficient de corrélation de 0.14 n’aura pas la même significativité su
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  x and y
-## t = -0.0059598, df = 19, p-value = 0.9953
+## t = -0.025384, df = 19, p-value = 0.98
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  -0.4327986  0.4305736
+##  -0.4364131  0.4269366
 ## sample estimates:
 ##          cor 
-## -0.001367272</code></pre>
+## -0.005823465</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="independance.html#cb20-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Spearman&#39;s rank correlation rho
 ## 
 ## data:  x and y
-## S = 1506, p-value = 0.9258
+## S = 1566, p-value = 0.9438
 ## alternative hypothesis: true rho is not equal to 0
 ## sample estimates:
-##        rho 
-## 0.02207792</code></pre>
+##         rho 
+## -0.01688312</code></pre>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="independance.html#cb22-1"></a><span class="kw">cor.test</span>(x, y, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Kendall&#39;s rank correlation tau
 ## 
 ## data:  x and y
-## T = 107, p-value = 0.9287
+## T = 104, p-value = 0.9762
 ## alternative hypothesis: true tau is not equal to 0
 ## sample estimates:
-##        tau 
-## 0.01904762</code></pre>
+##         tau 
+## -0.00952381</code></pre>
 </div>
 </div>
 <div id="test-du-chi²" class="section level2">
@@ -589,7 +589,7 @@ Un coefficient de corrélation de 0.14 n’aura pas la même significativité su
 <p>L’intérêt du test du Chi² est de mesurer l’indépendance entre deux variables qualitatives à partir de tableau de contigence.</p>
 <div id="titanic" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Titanic</h3>
-<p>On travaille sur le jeu de données Titanic 🧊⛴</p>
+<p>On travaille sur le jeu de données Titanic 🧊⛴ disponible en <a href="https://github.com/AnthonySardellitti/datascience-r/tree/master/datasets">cliquant ici</a>.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="independance.html#cb24-1"></a>df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./datasets/Titanic.csv&quot;</span>, <span class="dt">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 12px; margin-left: auto; margin-right: auto;">
@@ -1092,7 +1092,7 @@ male
 <div id="anova-1" class="section level2">
 <h2><span class="header-section-number">2.3</span> ANOVA 1</h2>
 <p>On effectue une analyse de variance pour mesurer l’indépendance entre une variable qualitative et une quantitative.</p>
-<p>Pour illustrer cela, on utilise le jeu de données Hotdogs 🌭.</p>
+<p>Pour illustrer cela, on utilise le jeu de données Hotdogs 🌭 disponible en <a href="https://github.com/AnthonySardellitti/datascience-r/tree/master/datasets">cliquant ici</a>.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="independance.html#cb41-1"></a>df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&quot;./datasets/Hotdogs.csv&quot;</span>, </span>
 <span id="cb41-2"><a href="independance.html#cb41-2"></a>               <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
