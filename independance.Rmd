@@ -294,8 +294,8 @@ H1 : Les moyennes de chaque groupe ne sont pas toutes égales
 Quand on dispose d'un petit échantillon, la pertinence de ce test repose sur la validation de plusieurs hypothèses :
 
 * l'indépendance entre les échantillons de chaque groupe
-* l'égalité des des variances que l'on peut verifier avec un test de Bartlett.
-* la normal
+* l'égalité des variances que l'on peut verifier avec un test de Bartlett.
+* la normalité des résidus avec un test de Shapiro.
 
 ### L'indépendance
 
